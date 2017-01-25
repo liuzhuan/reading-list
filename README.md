@@ -10,3 +10,4 @@
 ## 技术
 
 1. :+1: Node 即学即用，by Tom Hughes-Croucher & Mike Wilson，人民邮电出版社，2013年2月
+1. :+1: [GNU Make Tutorial](http://www.gnu.org/software/make/manual/html_node/index.html), by Free Software Foundation, May 22, 2016
