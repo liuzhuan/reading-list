@@ -15,3 +15,4 @@
 1. :+1: [Simple Tutorial for weixin App](https://mp.weixin.qq.com/debug/wxadoc/dev/index.html), by Tecent.
 1. :+1: [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sicp/full-text/book/book.html), by Harold Abelson & Gerald Jay Sussman & Julie Sussman, MIT Press.
 1. :+1: [图解 HTTP](https://book.douban.com/subject/25863515/), by [日]上野宣, 译者于均良, 人民邮电出版社，2014年4月
+1. :+1: [Exploring ES6, Upgrade to the next version of JavaScript](http://exploringjs.com/es6/index.html), by Dr. Axel Rauschmayer
