@@ -125,4 +125,35 @@ class Employee extends Person {
 
 You can see a runnable demo at [here](./Person.js).
 
+## 4.14 From custom error constructors to subclasses of Error
 
+```js
+class MyError extends Error { // ... }
+```
+
+## 4.15 From objects to Maps
+
+```js
+const map = new Map();
+function countWords(word) {
+    const count = map.get(word) || 0;
+    map.set(word, count + 1);
+}
+```
+
+## 4.16 New string methods
+
+* startsWith
+* endsWith
+* includes
+* repeat
+
+## 4.17 New Array methods
+
+* findIndex
+* from, spread operator
+* fill
+
+## 4.18 From CommonJS modules to ES6 modules
+
+# [5. New number and Math features](http://exploringjs.com/es6/ch_numbers.html)
