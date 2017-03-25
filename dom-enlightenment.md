@@ -1,4 +1,4 @@
-# DOM Enlightenment
+# [DOM Enlightenment](http://domenlightenment.com/)
 
 Author: Cody Lindley
 
@@ -13,8 +13,8 @@ Node attributes
 * lastChild
 * nextSibling
 * nodeName ? string value `#text`
-* nodeType ? 
-* nodeValue ? integer number
+* **nodeType** - integer number to distinguish node's type
+* **nodeValue** - Get `Text` and `Comment` actual string
 * parentNode
 * previousSibling
 
@@ -52,7 +52,7 @@ HTML*Element methods
 
 * insertAdjacentHTML() ?
 
-Frequently used nodeType and nodeName
+### Frequently used nodeType and nodeName
 
  node | nodeName | nodeType
  --- | --- | ---
