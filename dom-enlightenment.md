@@ -12,9 +12,9 @@ Node attributes
 * firstChild
 * lastChild
 * nextSibling
-* nodeName ?
-* nodeType ?
-* nodeValue ?
+* nodeName ? string value `#text`
+* nodeType ? 
+* nodeValue ? integer number
 * parentNode
 * previousSibling
 
@@ -51,3 +51,13 @@ HTML*Element attributes
 HTML*Element methods
 
 * insertAdjacentHTML() ?
+
+Frequently used nodeType and nodeName
+
+ node | nodeName | nodeType
+ --- | --- | ---
+ document.doctype | html | 10
+ document | #document | 9
+ document fragment | #document-fragment | 11
+ anchor | A | 1
+ text | #text | 3
