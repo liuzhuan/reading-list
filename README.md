@@ -1,11 +1,16 @@
-下面是一些我读过的书。模仿[阮一峰的读书清单](https://github.com/ruanyf/reading-list)。
+下面是一些我读过的书和源代码清单。模仿[阮一峰的读书清单](https://github.com/ruanyf/reading-list)。
 
 （注： :+1: 表示推荐，:x: 表示差评）
 
 ## 索引
 
 - [技术](#技术)
+- [源代码](#源代码)
 
+## 源代码
+
+1. [Why Read Source Code?](./source-code/README.md)
+1. [ustbhuangyi/picker](./source-code/ustbhuangyi/picker/README.md)
 
 ## 技术
 
