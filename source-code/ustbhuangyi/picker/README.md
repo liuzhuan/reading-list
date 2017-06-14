@@ -29,6 +29,30 @@ picker 构建工具基于 [webpack](https://webpack.js.org)，模板引擎使用
 
 [`--inline` 模式](https://webpack.github.io/docs/webpack-dev-server.html#inline-mode) 自动在 webpack 配置文件中自动添加客户端入口。
 
+## webpack.config.js
+
+`webpack.config.js` 是默认的配置文件，提供了开发时的运行参数。
+
+`__dirname` 和 `path` 在下文中是什么作用？
+
+```js
+module.exports = {
+    output: {
+        path: path.resolve(__dirname, 'dist')
+    },
+    resolve: {
+        extensions: ['', '.js'],
+        fallback: [path.join(__dirname, '../node_modules')]
+    }
+}
+```
+
+[`__dirname`](https://nodejs.org/api/globals.html#globals_dirname) 是 Node.js 内置变量，表示当前模块所在目录的绝对路径。与此相关的还有 [`__filename`](https://nodejs.org/api/globals.html#globals_filename)，表示当前模块的文件绝对路径。
+
+`path` 是内置的 node.js 模块。[`path.resolve`](https://nodejs.org/api/path.html#path_path_resolve_paths) 会将传入的路径参数，从右至左依次串联，若得到一个绝对路径，返回之；否则，返回当前目录的绝对路径与相对路径构成的字符串。[`path.join`](https://nodejs.org/api/path.html#path_path_join_paths) 会按照所在操作系统的路径分隔符，将传入的路径拼接，返回一个完整路径。
+
+`path.resolve` 返回的一定是绝对路径，`path.join` 可能返回相对路径或者绝对路径。
+
 ## src/
 
 `src/index.js` 是入口文件，从 package.json 中获取 version 版本号，注入到 `Picker`：
@@ -55,4 +79,5 @@ module.exports = {
 
 [DefinePlugin](http://webpack.github.io/docs/list-of-plugins.html#defineplugin) 可以在 webpack 编译过程中定义全局常量。
 
-> Node.js 中可以直接 require JSON 格式。
+> Node.js 中可以直接 require JSON 格式。但是小程序不行，因为微信小程序会自动“智能”补全后缀，变成 `package.json.js` 样式。
+
