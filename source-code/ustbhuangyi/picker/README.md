@@ -33,7 +33,7 @@ picker 构建工具基于 [webpack](https://webpack.js.org)，模板引擎使用
 
 `webpack.config.js` 是默认的配置文件，提供了开发时的运行参数。
 
-`__dirname` 和 `path` 在下文中是什么作用？
+### `__dirname` 和 `path` 是什么作用？
 
 ```js
 module.exports = {
@@ -52,6 +52,14 @@ module.exports = {
 `path` 是内置的 node.js 模块。[`path.resolve`](https://nodejs.org/api/path.html#path_path_resolve_paths) 会将传入的路径参数，从右至左依次串联，若得到一个绝对路径，返回之；否则，返回当前目录的绝对路径与相对路径构成的字符串。[`path.join`](https://nodejs.org/api/path.html#path_path_join_paths) 会按照所在操作系统的路径分隔符，将传入的路径拼接，返回一个完整路径。
 
 `path.resolve` 返回的一定是绝对路径，`path.join` 可能返回相对路径或者绝对路径。
+
+### `output.library` 和 `output.libraryTarget` 是什么意思？
+
+[output.library](https://webpack.github.io/docs/configuration.html#output-library) 用来设置发布的库文件名称，[output.libraryTarget](https://webpack.github.io/docs/configuration.html#output-librarytarget) 设置发布的库格式，可选值包括：`var`, `this`, `commonjs`, `commonjs2`, `amd`, `umd`。
+
+### `devtool: '#eval-source-map'` 是什么用法？
+
+[`devtool`](https://webpack.js.org/configuration/devtool/) 用来控制 `source maps` 的产生方式。
 
 ## src/
 
