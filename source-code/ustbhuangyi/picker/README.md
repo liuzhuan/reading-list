@@ -61,6 +61,26 @@ module.exports = {
 
 [`devtool`](https://webpack.js.org/configuration/devtool/) 用来控制 `source maps` 的产生方式。
 
+### `preLoaders` 是什么？
+
+[preLoaders 和 postLoaders](https://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders) 与 `loaders` 一样，可以对输入文件进行转换，分别作用于 `loaders` 之前和之后。
+
+### `loader: 'style-loader!css-loader!stylus-loader'` 的处理顺序是怎样的？
+
+[module.loaders](https://webpack.github.io/docs/configuration.html#module-loaders) 是一系列数组，其中每个元素都包含 `test`, `exclude`, `loader` 等属性。`loader` 属性是用 `!` 分隔的 `loader`。
+
+帮助文档 [using loaders](https://webpack.github.io/docs/using-loaders.html) 中说，当级联使用多个 loader，按照从右向左的顺序依次对原始文件处理。
+
+### `style-loader`, `url-loader` 和 `css-loader` 分别是什么作用？
+
+[`file-loader`](https://github.com/webpack-contrib/file-loader) 指导 webpack 输出指定的对象作为文件，并且返回公共 url。
+
+The [`url-loader`](https://github.com/webpack-contrib/url-loader) 工作方式与 `file-loader` 相似，但是如果文件小于设定的字节限制 `limit`，会返回一个 `DataURL`。
+
+[css-loader](https://github.com/webpack-contrib/css-loader) 把 `@import` 和 `url()` 翻译为 `import/require()` ，然后解析这些资源。
+
+[style-loader](https://github.com/webpack-contrib/style-loader) 把 CSS 注入到 DOM 的  `<script>` 中。
+
 ## src/
 
 `src/index.js` 是入口文件，从 package.json 中获取 version 版本号，注入到 `Picker`：
