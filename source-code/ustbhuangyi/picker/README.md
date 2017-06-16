@@ -81,6 +81,16 @@ The [`url-loader`](https://github.com/webpack-contrib/url-loader) 工作方式�
 
 [style-loader](https://github.com/webpack-contrib/style-loader) 把 CSS 注入到 DOM 的  `<script>` 中。
 
+### `resolve` 和 `resolveLoader` 分别代表什么意思？
+
+[`resolve`](https://webpack.github.io/docs/configuration.html#resolve) 影响模块的解析。
+
+[`resolve.fallback`](https://webpack.github.io/docs/configuration.html#resolve-fallback) 当 Webpack 在 `resolve.root` 和 `resolve.moduleDirectories` 中找不到时的替代查找文件夹。
+
+[`resolve.extensions`](https://webpack.github.io/docs/configuration.html#resolve-extensions) 用来解析模块的扩展名列表。一般需要在列表中增加 `''`，以保留模块的原始扩展名。
+
+[`resolveLoader`](https://webpack.github.io/docs/configuration.html#resolveloader) 与 `resolve` 类似，但是适用于解析 `loader`。
+
 ## src/
 
 `src/index.js` 是入口文件，从 package.json 中获取 version 版本号，注入到 `Picker`：
