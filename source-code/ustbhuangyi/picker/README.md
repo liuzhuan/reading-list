@@ -91,6 +91,10 @@ The [`url-loader`](https://github.com/webpack-contrib/url-loader) 工作方式�
 
 [`resolveLoader`](https://webpack.github.io/docs/configuration.html#resolveloader) 与 `resolve` 类似，但是适用于解析 `loader`。
 
+### `webpack.prod.config.js`
+
+`webpack.prod.config.js` 用于生产环境配置参数，增加了 `UglifyJsPlugin` 压缩 js 体积。
+
 ## src/
 
 `src/index.js` 是入口文件，从 package.json 中获取 version 版本号，注入到 `Picker`：
@@ -119,3 +123,26 @@ module.exports = {
 
 > Node.js 中可以直接 require JSON 格式。但是小程序不行，因为微信小程序会自动“智能”补全后缀，变成 `package.json.js` 样式。
 
+### `src/util/eventEmitter.js` 
+
+定义了事件基类。除构造函数外，还包括 `on`, `once`, `off`, `trigger` 四个函数。
+
+`once` 定义了一次性事件，通过创建闭包 `magic`，在成功一次之后便卸载该事件。
+
+`off` 方法用于删除监听事件。通过倒序循环，将 `_events[count][0]` 置为 `undefined`。
+
+> 为什么不在 `off` 中直接删除匹配的数组项呢？是因为怕影响其他待执行函数吗？
+
+`trigger` 事件中有个很有意思的细节：
+
+```js
+let eventsCopy = [...events];
+```
+
+为什么要复制一份新的事件？
+
+### `src/picker/picker.js`
+
+核心文件，导入 `better-scroll`, `picker.handlebars` 模板, `picker.style` 样式文件和一些工具类。
+
+其中定义并导出 `Picker` 类，而 `Picker` 类继承自 `EventEmitter` 类。
