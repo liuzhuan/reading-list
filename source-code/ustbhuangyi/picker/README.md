@@ -141,6 +141,32 @@ let eventsCopy = [...events];
 
 为什么要复制一份新的事件？
 
+### `src/util/dom.js`
+
+`dom.js` 定义了操作 DOM 的工具类。
+
+`createDom` 将传入的字符串，通过 [`childNodes`](https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes) 转换为 DOM 对象。
+
+`addEvent` 和 `removeEvent` 是对原生事件 API 的简单封装。
+
+`hasClass` 用来检测元素的 [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)，判断是否包含特定的类名，通过正则表达式验证。
+
+`addClass` 用于新增 class 类名，如果类名已经存在，则不做任何处理。这里先将 `className` 拆分为数组，然后将新类名放入数组，然后将数组链接为一个字符串。
+
+> 为什么不直接在 `className` 上直接使用字符串拼接的方法，将新类名增加到原类名尾部呢？
+
+> 除 `className` 外，[`classList`](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList) 也可以实现类名的增删改查，但是兼容性不太乐观。
+
+`removeClass` 通过构造一个包含待删除类名正则表达式，使用 `String.prototype.replace` 将其替换为空字符串。
+
+### `src/util/lang.js`
+
+定义了 `extend` 函数，使用源数据扩充目标数据。
+
+### `src/util/mixin.styl`
+
+这是一个 Stylus 文件，定义了很多函数。
+
 ### `src/picker/picker.js`
 
 核心文件，导入 `better-scroll`, `picker.handlebars` 模板, `picker.style` 样式文件和一些工具类。
