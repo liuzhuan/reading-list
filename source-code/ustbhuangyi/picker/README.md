@@ -165,10 +165,31 @@ let eventsCopy = [...events];
 
 ### `src/util/mixin.styl`
 
-这是一个 Stylus 文件，定义了很多函数。
+这是一个 Stylus 文件，定义了很多 minxins 和函数。
 
 ### `src/picker/picker.js`
 
 核心文件，导入 `better-scroll`, `picker.handlebars` 模板, `picker.style` 样式文件和一些工具类。
 
 其中定义并导出 `Picker` 类，而 `Picker` 类继承自 `EventEmitter` 类。
+
+`Picker` 内的方法包括：`constructor`, `_init`, `_bindEvent`, `_createWheel`, `show`, `hide`, `refillColumn`, `refill`, `scrollColumn` 。
+
+构造函数 `constructor` 接收参数，创建 picker 的 DOM 结构，并将 picker 的各个组件作为成员变量存储到实例中。
+
+> `xx-hook` 的类名应该是专门供 JS 调用的，没有 `-hook` 后缀的类名应该是添加样式的。
+
+其中，`pickerEl` 是整个 picker 示例。`maskEl` 是遮罩层。`wheelEl` 是每个列的实例。`panelEl` 相当于 `pickerEl - maskEl`。`confirmEl` 和 `cancelEl` 分别表示确定按钮和取消按钮。`scrollEl` 是 `wheelEl` 的子元素，两者都是类数组变量，其他元素都是标量。
+
+构造函数末尾，会调用 `_init` 函数。
+
+`_init` 函数初始化 `this.selectedIndex` 变量后，调用 `_bindEvent` 函数。
+
+`_bindEvent` 添加了三个事件处理函数。
+
+第一个用于阻止 `pickerEl` 的触摸滑动。
+
+第二个监听 `confirmEl` 的点击事件，并抛出 `picker.select` 事件。如果选择的数值发生改变，还要抛出 `picker.valuechange` 事件。
+
+第三个监听到 `cancelEL` 的点击事件后，隐藏 `picker` 控件，并抛出 `picker.cancel` 事件。
+
