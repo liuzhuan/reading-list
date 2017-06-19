@@ -193,3 +193,16 @@ let eventsCopy = [...events];
 
 第三个监听到 `cancelEL` 的点击事件后，隐藏 `picker` 控件，并抛出 `picker.cancel` 事件。
 
+`_createWheel(wheelEl, i)` 用于动态生成滑动轮。`this.wheels` 是一个数组，每个元素都是一个 `BScroll` 对象。`BScroll` 对象的 `wheel` 和 `selectedIndex` options 属性是专门为 `picker` 组件设立的。`BScroll` 实例通过监听 `scrollEnd` 事件，当探测到当前选中的索引值与上次索引值不同时，抛出 `picker.change` 事件，同时带有 `index` 和 `currentIndex` 两个参数。最后返回新生成的 `BScroll` 实例。
+
+`show()` 方法会显示 `pickerEl`，并在 0 秒后给 `maskEl` 和 `panelEl` 增加 `show` 类。如果 `this.wheels` 不存在，则创建新的 `this.wheels`，否则使 `this.wheels` 可用，并滑动到选中索引。
+
+`hide()` 函数会隐藏 `picker` 组件。
+
+`refillColumn(index, data)` 方法会用 `data` 数据重新填充索引值为 `index` 的数据轮。
+
+`refill(datas)` 是对 `refillColumn(index, data)` 的一个简单封装。
+
+`scrollColumn(index, dist)` 将索引值为 `index` 的数据轮滚动至 `dist` 的位置。
+
+至此，`picker` 核心代码分析基本完毕。
