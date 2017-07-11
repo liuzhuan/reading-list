@@ -43,3 +43,38 @@ cssnano({
 读取除 `src/example/*.wxss` 外的其它文件（包括 `.wxml` 和 `.wxss`），移动到 `dist` 目录。
 
 ## wxss 分析
+
+`src/style/weui.wxss` 是整个库的入口。用于引入其它 `xxx.wxss` 文件。
+
+### `base/reset.wxss`
+
+引入了 `fn.wxss`，并定义了 `page` 和 `icon` 的基础样式。`fn.wxss` 引入各种预定义的 `mixin` 和变量。
+
+`mixin/setOnepx` 定义了上下左右边框是 1 像素的函数，比如，上边框 1 像素是：
+
+```css
+.setTopLine(@c: #C7C7C7) {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1rpx solid @c;
+    color: @c;
+}
+```
+
+调用方式如下（`/src/style/widget/weui-cell/weui-cell.wxss`）：
+
+```css
+.weui-cells {
+    ...
+    &:before {
+        .setTopLine(@weuiCellBorderColor);
+    }
+    &:after {
+        .setBottomLine(@weuiCellBorderColor);
+    }
+}
+```
