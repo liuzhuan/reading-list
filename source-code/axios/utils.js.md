@@ -8,7 +8,7 @@
 | `isArrayBuffer` | 是否 ArrayBuffer |
 | `isBuffer` | ... |
 | `isFormData` | 是否表单数据 |
-| `isArrayBufferView` | ... |
+| `isArrayBufferView` | ... |
 | `isString` | ... |
 | `isNumber` | ... |
 | `isObject` | ... |
