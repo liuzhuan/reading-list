@@ -86,7 +86,7 @@ axios.interceptors.request.eject(myInterceptor)
     httpAgent: new http.Agent({ keepAlive: true }),
     httspAgent: new https.Agent({ keepAlive: true }),
     proxy: {
-        host: 127.0.0.1,
+        host: '127.0.0.1',
         port: 9000,
         auth: {
             username: 'proxy-name',
