@@ -22,7 +22,7 @@
 | `isStandardBrowserEnv` | 是否标准浏览器（非 web works 或 ReactNative） |
 | `forEach(obj, fn)` | 可以对 `Array` 或 `Object` 循环处理 |
 | `merge([obj1, obj2, ...])` | 相当于 `Object.assign()` |
-| `extend(a, b, thisArg)` | 用 `b` 的属性拓展 `a` |
+| `extend(a, b, thisArg)` | 用 `b` 的属性拓展 `a` |
 | `trim(str)` | 删除首尾空格 |
 
 ## 参考资料
