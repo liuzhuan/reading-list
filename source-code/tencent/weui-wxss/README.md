@@ -52,7 +52,7 @@ cssnano({
 
 `mixin/setOnepx` 定义了上下左右边框是 1 像素的函数，比如，上边框 1 像素是：
 
-```css
+```less
 .setTopLine(@c: #C7C7C7) {
     content: " ";
     position: absolute;
