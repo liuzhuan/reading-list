@@ -2,6 +2,8 @@
 
 ## 20180320
 
+[Using the HTML5 History API](https://css-tricks.com/using-the-html5-history-api/) by *Robin Rendle* on 2015/03/09. 介绍了 HTML5 历史 API 的前世今生，并举了一个例子。详见 [pdf](./assets/using-the-html5-history-api-css-tricks.pdf)
+
 [devServer.historyApiFallback](https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback) devServer 的这个选项通过使用 HTML5 历史 API，在遭遇 404 时返回 `index.html`，还能通过 `rewrites` 定义一个路由数组，将特定路由映射到相应静态页面。详见 [pdf](./assets/20180320-webpack-dev-server-config.pdf)
 
 [Native Web Apps](https://blog.andyet.com/2015/01/22/native-web-apps) 《原生网络应用》作者 Henrik Joreteg 写于 2015 年 1 月 22 日，通过列举不同的命名，作者最终为一类应用找到了精确的名称：Native Web Apps。原网页 PDF [见此](./assets/20180320-native-web-apps.pdf)。
