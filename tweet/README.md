@@ -2,6 +2,8 @@
 
 ## 20180320
 
+[从输入URL到页面加载的过程？如何由一道题完善自己的前端知识体系！](http://www.dailichun.com/2018/03/12/whenyouenteraurl.html)，作者 Lichun Dai，详见 [pdf](./assets/when-you-enter-a-url.pdf)
+
 [Using the HTML5 History API](https://css-tricks.com/using-the-html5-history-api/) by *Robin Rendle* on 2015/03/09. 介绍了 HTML5 历史 API 的前世今生，并举了一个例子。详见 [pdf](./assets/using-the-html5-history-api-css-tricks.pdf)
 
 [devServer.historyApiFallback](https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback) devServer 的这个选项通过使用 HTML5 历史 API，在遭遇 404 时返回 `index.html`，还能通过 `rewrites` 定义一个路由数组，将特定路由映射到相应静态页面。详见 [pdf](./assets/20180320-webpack-dev-server-config.pdf)
