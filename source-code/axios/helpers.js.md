@@ -25,3 +25,4 @@
 ## 参考资料
 
 - https://github.com/axios/axios/tree/v0.16.2/lib/helpers
+- https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa
