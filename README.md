@@ -1,13 +1,18 @@
-下面是一些我读过的书和源代码清单。模仿[阮一峰的读书清单](https://github.com/ruanyf/reading-list)。
+汇集网络有趣、有料的源码、书籍、博客或文章。
 
-（注： :+1: 表示推荐，:x: 表示差评）
+## Table of Content
 
-## 索引
-
-- [Source Codes](#Source)
-- [Books](#Books)
-- [Blogs](#Blogs)
-- [Articles](#Articles)
+- [Source Codes](#source-codes)
+- [Books](#books)
+  - [Linux](#linux)
+  - [Go](#go)
+  - [JavaScript](#javascript)
+  - [SDK](#sdk)
+  - [Lisp](#lisp)
+  - [HTTP](#http)
+  - [Others](#others)
+- [Blogs](#blogs)
+- [Articles](#articles)
 
 ## Source Codes
 
@@ -19,13 +24,36 @@
 
 ## Books
 
-1. Node 即学即用，by Tom Hughes-Croucher & Mike Wilson，人民邮电出版社，2013年2月
-1. [GNU Make Tutorial](http://www.gnu.org/software/make/manual/html_node/index.html), by Free Software Foundation, May 22, 2016
-1. [Everything curl](https://ec.haxx.se/), by *Daniel Stenberg*
-1. [Simple Tutorial for weixin App](https://mp.weixin.qq.com/debug/wxadoc/dev/index.html), by Tecent.
-1. [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sicp/full-text/book/book.html), by *Harold Abelson* & *Gerald Jay Sussman* & *Julie Sussman*, MIT Press.
-1. [图解 HTTP](https://book.douban.com/subject/25863515/), by [日]上野宣, 译者于均良, 人民邮电出版社，2014年4月
+### Linux
+
+1. [Linux: a Portable Operating System](https://www.cs.helsinki.fi/u/kutvonen/index_files/linus.pdf), by *Linus Torvalds*, 1997/01/31
+1. [GNU Make Tutorial](http://www.gnu.org/software/make/manual/html_node/index.html), by Free Software Foundation, 2016/05/22
+
+### Go
+
+- [The Go Programming Language](http://www.gopl.io/), by *Alan A. A. Donovan* & *Brian W. Kernighan*, 2015/10/26
+
+### JavaScript
+
+1. [Babel Handbook](https://github.com/jamiebuilds/babel-handbook), by *Jamie*
+1. Node 即学即用，by *Tom Hughes-Croucher* & *Mike Wilson*，人民邮电出版社，2013年2月
 1. [Exploring ES6, Upgrade to the next version of JavaScript](http://exploringjs.com/es6/index.html), by *Dr. Axel Rauschmayer*
+
+### SDK
+
+1. [微信小程序简易教程](https://mp.weixin.qq.com/debug/wxadoc/dev/index.html), by Tecent.
+
+### Lisp
+
+1. [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sicp/full-text/book/book.html), by *Harold Abelson* & *Gerald Jay Sussman* & *Julie Sussman*, MIT Press.
+
+### HTTP
+
+1. [图解 HTTP](https://book.douban.com/subject/25863515/), by [日]上野宣, 译者于均良, 人民邮电出版社，2014年4月
+
+### Others
+
+1. [Everything curl](https://ec.haxx.se/), by *Daniel Stenberg*
 1. [A vim Tutorial and Primer](https://danielmiessler.com/study/vim/), by *Daniel Miessler*
 
 ## Blogs
