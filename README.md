@@ -64,6 +64,10 @@
 
 ## Articles
 
+### DOM
+
+- [What is the difference between properties and attributes in HTML? - stackoverflow](https://stackoverflow.com/questions/6003819/what-is-the-difference-between-properties-and-attributes-in-html), by *Šime Vidas*, 2011/05/14
+
 ## Tools
 
 1. [RegExr](https://regexr.com/), by *gskinner*, an online tool to learn, build & test Regular Expressions
