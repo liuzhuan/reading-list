@@ -2,6 +2,7 @@
 
 ## Table of Content
 
+- [Specifications](#specifications)
 - [Source Codes](#source-codes)
 - [Books](#books)
   - [Linux](#linux)
@@ -14,6 +15,10 @@
 - [Blogs](#blogs)
 - [Articles](#articles)
 - [Tools](#tools)
+
+## Specifications
+
+1. [HTML5.2 - W3C Recommendation](https://www.w3.org/TR/html/)
 
 ## Source Codes
 
