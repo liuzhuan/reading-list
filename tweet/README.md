@@ -1,5 +1,13 @@
 # 微博
 
+## 20181201
+
+[萨提亚·纳德拉重构微软](https://www.fastcompany.com/40457458/satya-nadella-rewrites-microsofts-code), 2017/09/18, by *Harry Mccracken*
+
+微软CEO结束内讧，重整士气，产出多达2500亿市值。所需的就是聚焦，关注最重要的事。
+
+纳德拉上任伊始，就让高层阅读 *Marshall Rosenberg* 的《非暴力沟通》，用于增强移情合作。之前的微软给人的印象，就是部门之前[拔枪相向](http://bonkersworld.net/organizational-charts)。
+
 ## 20180320
 
 [从输入URL到页面加载的过程？如何由一道题完善自己的前端知识体系！](http://www.dailichun.com/2018/03/12/whenyouenteraurl.html)，作者 Lichun Dai，详见 [pdf](./assets/when-you-enter-a-url.pdf)
