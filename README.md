@@ -48,6 +48,7 @@
 ### SDK
 
 1. [微信小程序简易教程](https://mp.weixin.qq.com/debug/wxadoc/dev/index.html), by Tecent.
+2. [微信 JS-SDK 说明文档](sdks/weixin.md)
 
 ### Lisp
 
