@@ -72,6 +72,7 @@
 
 - [How To Become A Hacker](http://www.catb.org/esr/faqs/hacker-howto.html), by *Eric Steven Raymond*
 - [Shadowsocks 的 PAC 模式和全局模式](https://hamger.github.io/2018/02/25/Shadowsocks%E7%9A%84PAC%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%85%A8%E5%B1%80%E6%A8%A1%E5%BC%8F/), by 孟汉光，2018/02/25
+- [浏览器是如何工作的？](articles/how-browser-works.md)
 
 ### DOM
 
