@@ -104,6 +104,15 @@ wx.hideAllNonBaseMenuItem();
 wx.showAllNonBaseMenuItem();
 ```
 
+## 图像接口
+
+```js
+wx.previewImage({
+  current: '', // current url
+  urls: []
+})
+```
+
 ## 微信支付
 
 具体细节参见[微信支付开发文档](https://pay.weixin.qq.com/wiki/doc/api/index.html)
