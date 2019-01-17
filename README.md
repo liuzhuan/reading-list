@@ -44,6 +44,7 @@
 1. [Babel Handbook](https://github.com/jamiebuilds/babel-handbook), by *Jamie*
 1. Node 即学即用，by *Tom Hughes-Croucher* & *Mike Wilson*，人民邮电出版社，2013年2月
 1. [Exploring ES6, Upgrade to the next version of JavaScript](http://exploringjs.com/es6/index.html), by *Dr. Axel Rauschmayer*
+1. [TypeScript Deep Dive](https://github.com/basarat/typescript-book/)
 
 ### SDK
 
