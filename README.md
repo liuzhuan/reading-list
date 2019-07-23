@@ -2,20 +2,6 @@
 
 ## Table of Content
 
-- [Specifications](#specifications)
-- [Source Codes](#source-codes)
-- [Books](#books)
-  - [Linux](#linux)
-  - [Go](#go)
-  - [JavaScript](#javascript)
-  - [SDK](#sdk)
-  - [Lisp](#lisp)
-  - [HTTP](#http)
-  - [Others](#others)
-- [Blogs](#blogs)
-- [Articles](#articles)
-- [Tools](#tools)
-
 ## Specifications
 
 1. [HTML5.2 - W3C Recommendation](https://www.w3.org/TR/html/)
