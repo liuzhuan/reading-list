@@ -24,7 +24,7 @@
 
 ### Go
 
-- [The Go Programming Language](http://www.gopl.io/), by *Alan A. A. Donovan* & *Brian W. Kernighan*, 2015/10/26
+- [The Go Programming Language](https://book.douban.com/subject/26337545/), by *Alan A. A. Donovan* & *Brian W. Kernighan*, 2015/10/26
 
 ### JavaScript
 
