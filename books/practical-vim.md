@@ -53,7 +53,7 @@ Vim 把以 0 开头的数字当作八进制。
 
 TODO
 
-[1]: https://img3.doubanio.com/view/subject/l/public/s27262985.jpg
+[1]: https://images-cn.ssl-images-amazon.com/images/I/41KDzTdYJWL.jpg
 [2]: https://book.douban.com/subject/25869486/
 [3]: https://book.douban.com/review/6725047/ "errata"
 [4]: https://github.com/tpope "Tim Pope's Github"
