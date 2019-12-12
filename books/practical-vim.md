@@ -51,6 +51,14 @@ Vim 把以 0 开头的数字当作八进制。
 
 ## 第3章 插入模式
 
+在插入模式下，除了使用退格键删除光标前字符外，还可以使用如下组合键：
+
+```
+<C-h>   删除前一个字符（同退格键）
+<C-w>   删除前一个单词
+<C-u>   删至行首
+```
+
 TODO
 
 [1]: https://images-cn.ssl-images-amazon.com/images/I/41KDzTdYJWL.jpg
