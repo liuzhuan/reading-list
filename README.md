@@ -1,5 +1,3 @@
-汇集网络有趣、有料的源码、书籍、博客或文章。
-
 ## Source Code
 
 1. [Why Read Source Code?](./source-code/README.md)
