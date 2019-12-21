@@ -142,6 +142,37 @@ Istanbul 是一个非常出色的 JavaScript 代码覆盖率工具。它能监�
 
 Karma 是一个轻量级的服务器，用于在不同的浏览器上管理测试的加载和运行。
 
+这次有一堆依赖：
+
+```sh
+$ npm install chai istanbul karma karma-chai karma-chrome-launcher karma-clear-screen-reporter karma-cli karma-coverage karma-mocha mocha --save-dev
+```
+
+修改 `scripts` 字段：
+
+```json
+{
+    "scripts": {
+        "test": "karma start --reporters clear-screen,dots,coverage"
+    }
+}
+```
+
+配置 Karma
+
+如果没有指定文件名，Karma 就会读取 `karma.config.js` 配置文件。使用如下命令创建该文件：
+
+```sh
+$ node node_modules/karma/bin/karma init
+```
+
+在回答问题时，选择如下答案：
+
+1. 测试框架：选择 Mocha
+1. 是否使用 Require.js：no
+1. 想要捕获的浏览器：chrome
+1. 其他问题选择默认值
+
 
 
 TODO
