@@ -173,7 +173,19 @@ $ node node_modules/karma/bin/karma init
 1. 想要捕获的浏览器：chrome
 1. 其他问题选择默认值
 
+### 2.7 评估客户端代码覆盖率
 
+修改 `karma.config.js`：
+
+```js
+preprocessors: {
+    'src/**/*.js': 'coverage'
+},
+
+reporters: ['progress', 'coverage']
+```
+
+## 第3章 异步测试
 
 TODO
 
