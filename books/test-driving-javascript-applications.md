@@ -59,7 +59,16 @@ Mike Cohn 提出了测试金字塔的理念，即底层测试最多，高层次�
 
 ## 第2章 测试驱动设计
 
+### 2.1 开始
 
+编写一个华氏温度转换为摄氏温度的计算函数。
+
+设置项目
+
+```sh
+$ npm init -y
+$ npm install mocha chai --save-dev 
+```
 
 TODO
 
