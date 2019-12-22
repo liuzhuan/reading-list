@@ -251,6 +251,8 @@ it('should return correct lines count - using eventually', function() {
 1. `mock` 与 stub 类似，但它对交互进行跟踪，如调用的次数、调用的顺序。可以验证行为。
 1. `spy` 可以代理真实的依赖。
 
+这四者的详细解释可以参考 Martin Fowler 的文章 [Mocks Aren't Stubs][7]。
+
 ### 4.5 依赖注入
 
 依赖注入是用测试替身代替依赖的一种流行、通用的技术。依赖注入就是，依赖在调用时作为参数传递。
@@ -271,6 +273,7 @@ TODO
 ## REF
 
 1. [Test-Driving JavaScript Applications][1], by *Venkat Subramaniam*, 2016/10, The Pragmatic Bookshelf
+1. [Mocks Aren't Stubs][7], by *Martin Fowler*, 2007/01/02
 
 [1]: https://pragprog.com/book/vsjavas/test-driving-javascript-applications "Test-Driving JavaScript Applications"
 [2]: https://imagery.pragprog.com/products/472/vsjavas_xlargecover.jpg "Book Cover"
@@ -278,3 +281,4 @@ TODO
 [4]: https://dzone.com/articles/canary-tests "canary tests"
 [5]: http://wiki.c2.com/?ArrangeActAssert "Arrange Act Assert"
 [6]: https://www.npmjs.com/package/chai-as-promised "chai-as-promised"
+[7]: https://www.martinfowler.com/articles/mocksArentStubs.html "Mocks Aren't Stubs"
