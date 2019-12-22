@@ -173,6 +173,16 @@ $ node node_modules/karma/bin/karma init
 1. 想要捕获的浏览器：chrome
 1. 其他问题选择默认值
 
+添加 `chai` 和源码文件的路径：
+
+```diff
++ frameworks: ['mocha', 'chai'],
++ files: [
++     './test/**/*.js',
++     './src/**/*.js'
++ ]
+```
+
 ### 2.7 评估客户端代码覆盖率
 
 修改 `karma.config.js`：
@@ -187,7 +197,76 @@ reporters: ['progress', 'coverage']
 
 ## 第3章 异步测试
 
-TODO
+### 3.1 服务器端回调
+
+在测试用例的函数中添加 done 参数，异步完成后调用该函数即可。
+
+### 3.3 测试 promise
+
+可以用 `done` 和 promise 两种风格来测试 promise。但是，使用后者时，必须返回 Promise 对象。
+
+```js
+it('should pass', function() {
+    const callback = function(data) {
+        expect(data).to.be.true;
+    }
+
+    return getInfo()
+        .then(callback);
+})
+```
+
+[`chai-as-promised`][6] 库扩展了 Chai 的 API，提供了一些函数来验证 promise 的响应。 
+
+```js
+require('chai').use(require('chai-as-promised'));
+
+it('should return correct lines count - using eventually', function() {
+    return expect(linesCount('foo.js')).to.eventually.equal(15);
+})
+```
+
+## 第4章 巧妙处理依赖
+
+### 4.1 问题以及 spike 解决方案
+
+代码是否具有可测试性是个设计问题，设计糟糕的代码是难以测试的。
+
+### 4.2 模块化设计
+
+承担了大量工作的函数通常违背了单一职责原则（single responsibility principle）。
+
+### 4.3 尽量分离依赖
+
+编写自动化测试的第一步就是确定一个或多个不具有内部依赖的函数。
+
+### 4.4 使用测试替身
+
+测试替身是代替真正依赖的对象，从而让自动化测试可以进行。
+
+测试中用来代替依赖的测试替身有集中不同的类型。
+
+1. `fake` 适用于测试但不能用于生产环境的实现。比如，测试环境中的信用卡处理服务。
+1. `stub` 它并不是真正的实现，但被调用时可以快速返回预设数据。可以验证状态。
+1. `mock` 与 stub 类似，但它对交互进行跟踪，如调用的次数、调用的顺序。可以验证行为。
+1. `spy` 可以代理真实的依赖。
+
+### 4.5 依赖注入
+
+依赖注入是用测试替身代替依赖的一种流行、通用的技术。依赖注入就是，依赖在调用时作为参数传递。
+
+### 4.6 交互测试
+
+前面的测试都可以称作经验测试（`empirical test`）。
+
+交互测试更适合有依赖的代码。函数的测试关注的是函数的行为，而不是该函数的依赖对象是否正确。代码真的无需在测试过程中访问真正的依赖对象。
+
+如何在经验测试和交互测试之间选择？
+
+1. 如果结果是确定的、可预测的，而且很容易断定，那么就使用经验测试。
+1. 如果代码有很复杂的依赖关系，而且依赖让代码不确定、难以预测、脆弱或耗时，那么就使用交互测试。
+
+TODO 
 
 ## REF
 
@@ -198,3 +277,4 @@ TODO
 [3]: https://www.ituring.com.cn/book/1920 "JavaScript 测试驱动开发"
 [4]: https://dzone.com/articles/canary-tests "canary tests"
 [5]: http://wiki.c2.com/?ArrangeActAssert "Arrange Act Assert"
+[6]: https://www.npmjs.com/package/chai-as-promised "chai-as-promised"
