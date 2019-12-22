@@ -268,6 +268,26 @@ it('should return correct lines count - using eventually', function() {
 1. 如果结果是确定的、可预测的，而且很容易断定，那么就使用经验测试。
 1. 如果代码有很复杂的依赖关系，而且依赖让代码不确定、难以预测、脆弱或耗时，那么就使用交互测试。
 
+### 4.7 使用 Sinon 清理测试代码
+
+Sinon 提供了一些函数来创建不同类型的测试替身。`Sinon-Chai` 模块使得原本就很快速的 Chai 库得以用更直观的方式来验证测试替身的调用。
+
+使用 Sinon 需要用到4个包：`sinon`, `sinon-chai`, `karma-sinon` 和 `karma-sinon-chai`。
+
+安装 Sinon
+
+```sh
+$ npm install sinon sinon-chai karma-sinon karma-sinon-chai
+```
+
+你还要告诉 Karma 使用它们。配置 `karma.config.js`
+
+```diff
++ frameworks: ['mocha', 'chai', 'sinon', 'sinon-chai']
+```
+
+Sinon 可以让测试替身的创建非常简介快速。如果我们用测试替身替换原有的函数，Sinon 的 `sandbox` 可以简化恢复函数的过程。
+
 TODO 
 
 ## REF
