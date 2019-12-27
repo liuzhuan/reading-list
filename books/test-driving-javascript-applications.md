@@ -286,7 +286,77 @@ $ npm install sinon sinon-chai karma-sinon karma-sinon-chai
 + frameworks: ['mocha', 'chai', 'sinon', 'sinon-chai']
 ```
 
-Sinon 可以让测试替身的创建非常简介快速。如果我们用测试替身替换原有的函数，Sinon 的 `sandbox` 可以简化恢复函数的过程。
+Sinon 可以让测试替身的创建非常简洁快速。如果我们用测试替身替换原有的函数，Sinon 的 `sandbox` 可以简化恢复函数的过程。
+
+> 目前最新的 Sinon.jS 版本是 v8.0.1。自 `Sinon@5.0.0` 起，[sinon 对象本身就是一个 sandbox][8]。除非你有特殊需求或高级设定，通常你不再需要创建新的 sandbox。
+
+使用 Sinon 的第一步就是创建和恢复 sandbox。
+
+```js
+var sandbox;
+
+beforeEach(function() {
+    sandbox = sinon.sandbox.create();
+});
+
+afterEach(function() {
+    sandbox.restore();
+});
+```
+
+创建 spy
+
+```js
+var aSpy = sandbox.spy(existingFunction);
+
+// 验证函数是否被调用
+expect(aSpy.called).to.be.true;
+
+// Sinon-Chai 语法简化验证方式
+expect(aSpy).called;
+
+// 验证函数是否以特定参数调用
+expect(aSpy).to.have.been.calledWith('magic');
+```
+
+创建 Stub
+
+```js
+var aStub = sandbox.stub(util, 'alias')
+    .withArgs('Robert')
+    .returns('Bob');
+```
+
+创建 Mock
+
+```js
+var aMock = sandbox.mock(util)
+    .expects('alias')
+    .withArgs('Robert');
+
+// 检测被测函数与 mock 代替的依赖是否进行了交互
+aMock.verify();
+```
+
+stub 测试状态，mock 更适合测试交互或行为。
+
+使用 spy 测试 onSuccess 函数
+
+```js
+var createURLSpy = sandbox.spy(window, 'createURL');
+var position = {
+    coords: {
+        latitude: 40.41,
+        longitude: -105.55,
+    }
+};
+onSuccess(position);
+expect(createURLSpy).to.have.been.calledWith(40.41, -105.55);
+```
+
+自动化测试有助于创造良好的设计，良好的设计让代码更易于测试。
+
+## 第5章 Node.js 测试驱动开发
 
 TODO 
 
@@ -302,3 +372,4 @@ TODO
 [5]: http://wiki.c2.com/?ArrangeActAssert "Arrange Act Assert"
 [6]: https://www.npmjs.com/package/chai-as-promised "chai-as-promised"
 [7]: https://www.martinfowler.com/articles/mocksArentStubs.html "Mocks Aren't Stubs"
+[8]: https://sinonjs.org/releases/v8.0.1/sandbox/ "Sandboxes - Sinon.JS"
