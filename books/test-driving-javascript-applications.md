@@ -376,6 +376,10 @@ expect(createURLSpy).to.have.been.calledWith(40.41, -105.55);
 
 测试可以对设计决策进行文档化。
 
+### 5.4 创建 spike 以获得启发
+
+通过创建 spike 进行学习，然后丢弃它，继续使用测试驱动开发。
+
 TODO 5.3.2 设计 parseTickers 函数 306/998 30%
 
 ## REF
