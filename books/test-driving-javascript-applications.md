@@ -380,7 +380,67 @@ expect(createURLSpy).to.have.been.calledWith(40.41, -105.55);
 
 通过创建 spike 进行学习，然后丢弃它，继续使用测试驱动开发。
 
-TODO 5.3.2 设计 parseTickers 函数 306/998 30%
+### 5.5 模块化以易于测试
+
+### 5.6 分离关注点
+
+### 5.7 集成测试
+
+集成测试，需要真实的文件。
+
+如果想查看真实的程序运行效果，可以编写一个驱动程序。
+
+### 5.8 回顾代码覆盖率和设计
+
+package.json 中的 test 命令：
+
+```json
+{
+    "scripts": {
+        "test": "istanbul cover node_modules/mocha/bin/_mocha"
+    }
+}
+```
+
+### 5.9 提供 HTTP 访问
+
+## 第6章 Express 测试驱动开发
+
+### 6.1 为可测试性设计
+
+为了方便对模型对自动化测试，避免模型和数据库紧密耦合，解决方法是依赖注入。
+
+### 6.2 创建 Express 应用并运行金丝雀测试
+
+[Express 生成器][9]可以快速创建项目目录结构。
+
+mocha 的 `--watch` 选项，可以监控文件的改动。
+
+```sh
+$ mocha --watch --recursive test/server
+```
+
+### 6.3 设计数据库连接
+
+`db.connect();`
+
+### 6.4 设计模型
+
+只有模型相关的函数才会与数据库进行交互。为了避免多次操作造成的不良影响，需要使用测试固件（test fixture）。在 `beforeEach` 和 `afterEach` 中增加设置和清理函数。`before()` 可以在测试套件前运行一次。
+
+```js
+describe('test', function() {
+    before(function(done) {
+        db.connect('mongodb://localhost/todotest', done);
+    });
+
+    after(function() {
+        db.close();
+    });
+});
+```
+
+TODO
 
 ## REF
 
@@ -395,3 +455,4 @@ TODO 5.3.2 设计 parseTickers 函数 306/998 30%
 [6]: https://www.npmjs.com/package/chai-as-promised "chai-as-promised"
 [7]: https://www.martinfowler.com/articles/mocksArentStubs.html "Mocks Aren't Stubs"
 [8]: https://sinonjs.org/releases/v8.0.1/sandbox/ "Sandboxes - Sinon.JS"
+[9]: https://expressjs.com/en/starter/generator.html "Express application generator"
