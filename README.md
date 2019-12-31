@@ -24,3 +24,4 @@
 1. [Everything curl](https://ec.haxx.se/), by *Daniel Stenberg*
 1. [A vim Tutorial and Primer](https://danielmiessler.com/study/vim/), by *Daniel Miessler*
 1. [Vim 实用技巧](./books/practical-vim.md), by *Drew Neil*, 2014/05/01, 人民邮电出版社，第一版
+1. [Clean Agile: Back to Basics](./books/clean-agile_back-to-basics.md), by *Robert C. Martin*, Prentice Hall Publish, 2019/12
