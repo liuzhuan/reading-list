@@ -9,6 +9,7 @@
 
 ## Books
 
+1. [Vim 实用技巧](./books/practical-vim.md), by *Drew Neil*, 2014/05/01, 人民邮电出版社，第一版
 1. [Pro Git 2nd Edition(2014)](./books/pro-git-v2.md), by *Scott Chacon* and *Ben Straub*, Apress
 1. [JavaScript 测试驱动开发](./books/test-driving-javascript-applications.md), by *Venkat Subramaniam*
 1. [Linux: a Portable Operating System](https://www.cs.helsinki.fi/u/kutvonen/index_files/linus.pdf), by *Linus Torvalds*, 1997/01/31
@@ -23,5 +24,4 @@
 1. [图解 HTTP](https://book.douban.com/subject/25863515/), by [日]上野宣, 译者于均良, 人民邮电出版社，2014年4月
 1. [Everything curl](https://ec.haxx.se/), by *Daniel Stenberg*
 1. [A vim Tutorial and Primer](https://danielmiessler.com/study/vim/), by *Daniel Miessler*
-1. [Vim 实用技巧](./books/practical-vim.md), by *Drew Neil*, 2014/05/01, 人民邮电出版社，第一版
 1. [Clean Agile: Back to Basics](./books/clean-agile_back-to-basics.md), by *Robert C. Martin*, Prentice Hall Publish, 2019/12
