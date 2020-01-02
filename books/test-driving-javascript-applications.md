@@ -496,6 +496,42 @@ Karma 配置文件 `karma.config.js` 中有以下内容：
 
 ### 7.3 增量开发
 
+测试 DOM 更新的时候，不需要真正的创建 DOM 元素，可以创建 stub
+
+```js
+var domElements;
+
+beforeEach(function() {
+    sandbox = sinon.sandbox.create();
+
+    domElements = {};
+    sandbox.stub(document, 'getElementById', function(id) {
+        if (!domElements[id]) domElements[id] = {};
+        return domElements[id];
+    });
+});
+```
+
+为客户端编写自动化测试时，不应该启动和运行服务器端。否则，测试将变得脆弱、不确定、难以运行。
+
+Sinon 的 FakeXMLHttpRequest 可以解决这个问题。
+
+```js
+var xhr;
+
+beforeEach(function() {
+    xhr = sinon.useFakeXMLHttpRequest();
+    xhr.requests = [];
+    xhr.onCreate = function(req) {
+        xhr.requests.push(req);
+    };
+});
+
+afterEach(function() {
+    xhr.restore();
+});
+```
+
 TODO
 
 ## REF
