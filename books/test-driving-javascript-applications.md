@@ -440,6 +440,62 @@ describe('test', function() {
 });
 ```
 
+### 6.6 评估代码覆盖率
+
+```json
+{
+    "scripts": {
+        "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --recursive test/server"
+    }
+}
+```
+
+双破折号表明，后面的选项是用于 Mocha 而非 Istanbul。
+
+### 6.7 运行应用
+
+测试服务端代码有两种方法。如下：
+
+使用 curl
+
+```sh
+$ curl -w "\n" -X GET http://localhost:3000/tasks
+$ curl -w "\n" -X POST -H "Content-Type: application/json" \
+http://localhost:3000/tasks
+$ curl -w "\n" -X GET http://localhost:3000/tasks
+$ curl -w "\n" -X DELETE http://localhost:3000/tasks/abcdefg
+```
+
+使用 Chrome 扩展程序
+
+Advanced REST 浏览器插件或 Postman。
+
+## 第7章 与 DOM 和 jQuery 协作
+
+### 7.1 创建策略设计
+
+在编写和测试任务前，我们不需要 HTML 文件，也不需要运行服务器。
+
+### 7.2 通过测试创建战略设计
+
+Karma 配置文件 `karma.config.js` 中有以下内容：
+
+```js
+{
+    // 告诉 karma 加载列出的插件
+    frameworks: ['mocha', 'chai', 'sinon', 'sinon-chai'],
+
+    // 在运行测试之前，应该加载到浏览器的 JavaScript 文件
+    files: [
+        'public/javascript/jquery-2.1.4.js',
+        './test/client/**/*.js',
+        './public/javascripts/**/*.js',
+    ],
+}
+```
+
+### 7.3 增量开发
+
 TODO
 
 ## REF
