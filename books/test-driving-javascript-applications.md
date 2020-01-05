@@ -532,6 +532,42 @@ afterEach(function() {
 });
 ```
 
+## 第8章 使用 AngularJS
+
+AngularJS 十分重视自动化测试，它使用依赖注入组合代码，让代码真正可以测试。
+
+### 8.1 测试 AngularJS 的方式
+
+AngularJS 使用 `angular-mocks` 优雅的简化了自动化测试时的依赖和服务。
+
+测试执行显示的依赖注入的例子如下：
+
+```html
+<html ng-app="sample">
+<div ng-controller="SampleController as controller">
+```
+
+这种格式在测试套件中会转换为注入请求。比如：
+
+```js
+// 等同于 ng-app='sample'
+beforeEach(module('sample'));
+
+beforeEach(inject(function($controller){
+    controller = $controller('SampleController');
+}));
+```
+
+### 8.5 分离关注点，减少mock
+
+关注点分离（Separation of concerns, SOC）是指将整体看成部分的组合体，对各部分单独处理的一种原则。模块化是其中最有代表性的具体设计原则之一。
+
+如果排序代码在 HTML 文件中，就不能使用控制器的测试对其验证。不得不依赖 UI 层的测试，耗时且脆弱。
+
+因此，要避免使用会导致测试困难的库或者框架的特性。寻找能够支持自动化验证的方法。
+
+### 8.6 继续设计
+
 TODO
 
 ## REF
