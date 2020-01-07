@@ -9,6 +9,7 @@
 
 ## Books
 
+1. [Python编程：从入门到实践](./books/python-crash-course.md), by *Eric Matthes*, 2016/07, 人民邮电出版社
 1. [Vim 实用技巧](./books/practical-vim.md), by *Drew Neil*, 2014/05/01, 人民邮电出版社，第一版
 1. [Pro Git 2nd Edition(2014)](./books/pro-git-v2.md), by *Scott Chacon* and *Ben Straub*, Apress
 1. [JavaScript 测试驱动开发](./books/test-driving-javascript-applications.md), by *Venkat Subramaniam*
