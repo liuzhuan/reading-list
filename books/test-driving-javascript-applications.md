@@ -566,10 +566,6 @@ beforeEach(inject(function($controller){
 
 因此，要避免使用会导致测试困难的库或者框架的特性。寻找能够支持自动化验证的方法。
 
-### 8.6 继续设计
-
-TODO
-
 ## REF
 
 1. [Test-Driving JavaScript Applications][1], by *Venkat Subramaniam*, 2016/10, The Pragmatic Bookshelf
