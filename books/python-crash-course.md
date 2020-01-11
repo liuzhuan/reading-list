@@ -110,6 +110,90 @@ Namespaces are one honking great idea -- let's do more of those!
 
 ## 第3章 列表简介
 
+列表由一系列按顺序排列的元素组成。
+
+```py
+bicycles = ['trek', 'cannondale', 'redline', 'specialized']
+```
+
+使用索引值访问列表元素。注意，索引值从 0 开始。
+
+```py
+# 访问第一个元素
+bicycles[0]         # => 'trek'
+
+# 访问第三个元素
+bicycles[2]         # => 'redline'
+
+# 访问最后一个元素
+bicycles[-1]        # => 'specialized'
+
+# 访问倒数第二个元素
+bicycles[-2]        # => 'redline'
+```
+
+修改、添加和删除元素
+
+```py
+motors = ['honda', 'yamaha', 'suzuki']
+motors[0] = 'ducati'
+motors
+# => ['ducati', 'yamaha', 'suzuki']
+
+# 添加元素 append
+motors = ['honda', 'yamaha', 'suzuki']
+motors.append('ducati')
+motors
+# => ['honda', 'yamaha', 'suzuki', 'ducati']
+
+# 插入元素 insert
+motors = ['honda', 'yamaha', 'suzuki']
+motors.insert(0, 'ducati')
+motors
+# => ['ducati', 'honda', 'yamaha', 'suzuki']
+
+# 如果知道索引值，使用 del 删除列表元素
+del motors[0]
+
+# 如果删除的索引值超出合理范围，则报错
+del motors[100]
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: list assignment index out of range
+
+# 如果要使用删除的值，使用 pop() 删除元素
+motors = ['honda', 'yamaha', 'suzuki']
+result = motors.pop()
+print(result)       # => suzuki
+print(motors)       # => ['honda', 'yamaha']
+
+# 可以使用 pop 弹出任意位置的元素
+motors = ['honda', 'yamaha', 'suzuki']
+result = motors.pop(1)
+print(result)       # => yamaha
+print(motors)       # => ['honda', 'suzuki']
+
+# 如果知道待删除的值，可以使用 remove() 方法
+motors = ['honda', 'yamaha', 'suzuki', 'ducati']
+print(motors)
+motors.remove('ducati')
+print(motors)
+# => ['honda', 'yamaha', 'suzuki', 'ducati']
+# => ['honda', 'yamaha', 'suzuki']
+
+# remove() 只删除第一个值
+motors = ['honda', 'yamaha', 'suzuki', 'honda']
+print(motors)
+motors.remove('honda')
+print(motors)
+
+# => ['honda', 'yamaha', 'suzuki', 'honda']
+# => ['yamaha', 'suzuki', 'honda']
+```
+
+### 3.3 组织列表
+
 TODO
 
 ## REF
