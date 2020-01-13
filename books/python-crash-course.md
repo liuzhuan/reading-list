@@ -196,6 +196,37 @@ print(motors)
 
 TODO
 
+## 第8章 函数
+
+函数是带名字的代码块，可以反复调用。
+
+```py
+def greet_user():
+    """Print simple greeting words"""
+    print('Hello!')
+```
+
+紧随函数名之后，三个引号扩起来的文本叫做文档字符串（docstring），用来描述函数是做什么的。
+
+向函数传递参数
+
+```py
+def greet_user(username):
+    print('Hello, ' + username.title() + '!')
+```
+
+位置实参
+
+```def
+def pet(animal, name):
+    print('I have a ' + animal + '.')
+    print('My ' + animal + '\'s name is ' + name.title() + '.')
+
+pet('hamster', 'harry')
+```
+
+TODO
+
 ## REF
 
 1. [Python Crash Course][2], by *Eric Matthes*
