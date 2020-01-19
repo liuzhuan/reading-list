@@ -227,6 +227,67 @@ pet('hamster', 'harry')
 
 TODO
 
+## 第11章 测试代码
+
+unittest 模块可用于测试代码。
+
+**name_function.py**
+
+```py
+def get_formatted_name(first, last):
+    full_name = first + ' ' + last
+    return full_name.title()
+```
+
+**test_name_function.py**
+
+```py
+import unittest
+from name_function import get_formatted_name
+
+class NamesTestCase(unittest.TestCase):
+    def test_first_last_name(self):
+        formatted_name = get_formatted_name('janis', 'joplin')
+        self.assertEqual(formatted_name, 'Janis Joplin')
+
+unittest.main()
+```
+
+运行 `test_name_function` 时，所有以 `test` 开头的方法都将自动执行。
+
+`assertEqual` 是一个断言方法，用来核实实际结果和期望值一致。
+
+### 11.2 测试类
+
+unittest 常用的断言方法：
+
+- `assertEqual(a, b)`
+- `assertNotEqual(a, b)`
+- `assertTrue(x)`
+- `assertFalse(x)`
+- `assertIn(item, list)`
+- `assertNotIn(item, list)`
+
+**survey.py**
+
+```py
+class AnonymousSurvey():
+    def __init__(self, question):
+        self.question = question
+        self.responses = []
+
+    def show_question(self):
+        print(self.question)
+
+    def store_response(self, new_response):
+        self.responses.append(new_response)
+
+    def show_results(self):
+        print('Survey results:')
+        for response in self.responses:
+            print('- ' + response)
+```
+
 ## REF
 
 1. [Python Crash Course][2], by *Eric Matthes*
