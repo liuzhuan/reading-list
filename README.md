@@ -13,6 +13,7 @@
 1. [Vim 实用技巧](./books/practical-vim.md), by *Drew Neil*, 2014/05/01, 人民邮电出版社，第一版
 1. [Pro Git 2nd Edition(2014)](./books/pro-git-v2.md), by *Scott Chacon* and *Ben Straub*, Apress
 1. [JavaScript 测试驱动开发](./books/test-driving-javascript-applications.md), by *Venkat Subramaniam*
+1. [DOM Enlightenment](./books/dom-enlightenment.md), by *Cody Lindley*
 1. [Linux: a Portable Operating System](https://www.cs.helsinki.fi/u/kutvonen/index_files/linus.pdf), by *Linus Torvalds*, 1997/01/31
 1. [GNU Make Tutorial](http://www.gnu.org/software/make/manual/html_node/index.html), by Free Software Foundation, 2016/05/22
 1. [The Go Programming Language](https://book.douban.com/subject/26337545/), by *Alan A. A. Donovan* & *Brian W. Kernighan*, 2015/10/26
