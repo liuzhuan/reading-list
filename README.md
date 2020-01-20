@@ -6,6 +6,7 @@
 1. [Tencent/weui-wxss](./source-code/tencent/weui-wxss/README.md)
 1. [axios](./source-code/axios/README.md)
 1. [http-party/node-http-proxy](./source-code/http-party/node-http-proxy/README.md)
+1. [The Super Tiny Compiler](./source-code/the-super-tiny-compiler/README.md)
 
 ## Books
 
