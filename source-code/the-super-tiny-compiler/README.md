@@ -15,8 +15,8 @@
 大部分编译器可以拆分为三个主要阶段：
 
 1. **Parsing** 读取源码，并将其转为较抽象的代码。
-1. **Transformation** 转换语法，超空抽象代码
-1. **Code Generation** 产生目标码
+1. **Transformation** 转换语法，修改抽象语法树 AST。
+1. **Code Generation** 产生目标码。
 
 parsing 又能细分为两个阶段：
 
@@ -153,7 +153,7 @@ function walk() {
 
         token = tokens[++current];
 
-        // 此处的代码
+        // 此处的代码是重点，也是难点
         while ((token.type !== 'paren') || (token.type === 'paren' && token.value !== ')')) {
             node.params.push(walk());
             token = tokens[current];
