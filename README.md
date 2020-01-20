@@ -20,7 +20,7 @@
 1. [Linux: a Portable Operating System](https://www.cs.helsinki.fi/u/kutvonen/index_files/linus.pdf), by *Linus Torvalds*, 1997/01/31
 1. [GNU Make Tutorial](http://www.gnu.org/software/make/manual/html_node/index.html), by Free Software Foundation, 2016/05/22
 1. [The Go Programming Language](https://book.douban.com/subject/26337545/), by *Alan A. A. Donovan* & *Brian W. Kernighan*, 2015/10/26
-1. [Babel Handbook](https://github.com/jamiebuilds/babel-handbook), by *Jamie*
+1. [Babel Handbook](./books/babel-handbook/README.md), by *James Kyle*
 1. Node 即学即用，by *Tom Hughes-Croucher* & *Mike Wilson*，人民邮电出版社，2013年2月
 1. [Exploring ES6, Upgrade to the next version of JavaScript](http://exploringjs.com/es6/index.html), by *Dr. Axel Rauschmayer*
 1. [TypeScript Deep Dive](https://github.com/basarat/typescript-book/)
