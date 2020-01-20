@@ -87,7 +87,25 @@ export function tokenizer(input, options) {
 
 可以看出，核心代码是 `state.js` 中的 Parser 类。
 
+```js
+export class Parser {
+    constructor(options, input, startPos) {
 
+    }
+
+    parse() {
+        let node = this.options.program || this.startNode();
+        this.nextToken();
+        return this.parseTopLevel(node);
+    }
+
+    static parse(input, options) {
+        return new this(options, input).parse();
+    }
+}
+```
+
+> 先暂时看到这里，太难懂了。后会有期。2020-01-20 22:02
 
 ## acorn-loose
 
