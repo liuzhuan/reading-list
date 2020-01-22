@@ -120,4 +120,26 @@ create(false);          // Error
 create(undefined);      // Error
 ```
 
+**类型断言**
+
+当你对类型的理解比编译器更多时，可以使用类型断言（*Type Assertions*），指引编译器做更细致的类型判断。
+
+类型断言和其他语言的类型转换（*Type Cast*）类似，但不会对数据做校验或数据重建，对运行时也没有任何影响，只对编译器有效。
+
+类型断言分两种方式，一种是“尖括号”：
+
+```typescript
+let someValue: any = 'this is a string';
+let strLength: number = (<string>someValue).length;
+```
+
+另一种是 `as` 语法：
+
+```typescript
+let someValue: any = 'this is a string';
+let strLength: number = (someValue as string).length;
+```
+
+两者是等价的，选择哪一个依个人喜好而定。但是，如果在 TypeScript 使用 JSX 时，只能使用 `as` 语法。
+
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
