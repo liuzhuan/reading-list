@@ -1,6 +1,10 @@
 # Babel Handbook
 
+作者：[Jamie Kyle][6]
+
 本手册分两部分：[用户手册][2]和[插件手册][3]。
+
+本书的版本适用于 Babel v6- 版本，不适合 Babel v7+。v7+ 版的包名需要更新为 `@babel/*`。
 
 ## 用户手册
 
@@ -166,6 +170,199 @@ $ npm install --save-dev babel-preset-es2015
 }
 ```
 
+### 执行 Babel 生成的代码
+
+**babel-polyfill**
+
+几乎所有的新 JavaScript 语法都能被 Babel 转译，但是新 API 却不可以。
+
+比如 `Array.from()` 不会被 Babel 转译。这将导致就平台上无法运行包含 `Array.from` 的代码。
+
+可以用 [Polyfill][4] 解决这个问题。
+
+> A polyfill, or polyfiller, is a piece of code (or plugin) that provides the technology that you, the developer, expect the browser to provide natively. Flattening the API landscape if you will.
+
+Babel 使用 [`core-js`][5] 和定制化的 regenerator 运行时作为 Polyfill。
+
+为了使用 `babel-polyfill`，需要首先安装：
+
+```sh
+$ npm install --save babel-polyfill
+```
+
+然后在页面头部引用：
+
+```js
+import 'babel-polyfill';
+```
+
+**babel-runtime**
+
+为了实现 ECMAScript 规范的细节，Babel 使用很多的 helper 辅助函数，以便让产生的代码更简洁。
+
+由于辅助函数可能变得很长，而且出现在每个文件的头部，可以将它们抽离到一个统一的 runtime 中。
+
+首先，安装 `babel-plugin-transform-runtime` 和 `babel-runtime`:
+
+```sh
+$ npm install --save-dev babel-plugin-transform-runtime
+$ npm install --save-dev babel-runtime
+```
+
+更新 `.babelrc`
+
+```json
+{
+    "plugins": [
+        "transform-runtime",
+        "transform-es2015-classes"
+    ]
+}
+```
+
+现在，Babel 将会把如下代码：
+
+```js
+class Foo {
+    method() {}
+}
+```
+
+转译为：
+
+```js
+import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
+import _createClass from 'babel-runtime/helpers/createClass';
+
+let Foo = function() {
+    function Foo() {
+        _classCallCheck(this, Foo);
+    }
+
+    _createClass(Foo, [{
+        key: 'method',
+        value: function method() {}
+    }]);
+
+    return Foo;
+}();
+```
+
+### 配置 Babel（高级篇）
+
+手动指定插件
+
+Babel presets 仅仅是预置插件的集合。可以手动指定插件，来得到不一样的设置。
+
+```sh
+$ npm install --save-dev babel-plugin-transform-es2015-classes
+```
+
+**.babelrc**
+
+```json
+{
+    "plugins": [
+        "transform-es2015-classes"
+    ]
+}
+```
+
+插件选项
+
+```json
+{
+    "plugins": [
+        [
+            "transform-es2015-classes",
+            { "loose": true }
+        ]
+    ]
+}
+```
+
+根据环境自定义 Babel
+
+```json
+{
+    "presets": ["es2015"],
+    "plugins": [],
+    "env": {
+        "development": {
+            "plugins": []
+        },
+        "production": {
+            "plugins": []
+        }
+    }
+}
+```
+
+当前的环境使用 `process.env.BABEL_ENV` 变量，如果 `BABEL_ENV` 不存在，则使用 `NODE_ENV`。如果 `NODE_ENV` 也不存在，默认是 `development`。
+
+在 Unix 中方法如下：
+
+```sh
+$ BABEL_ENV=production [COMMAND]
+$ NODE_ENV=production [COMMAND]
+```
+
+在 Windows 中的方法如下：
+
+```sh
+$ SET BABEL_ENV=production
+$ [COMMAND]
+```
+
+如果要跨平台，需要使用 `cross-env`。
+
+制作自己的 preset
+
+创建自定义 preset 很简单，比如你如下 `.babelrc` 文件：
+
+```json
+{
+    "presets": [
+        "es2015",
+        "react"
+    ],
+    "plugins": [
+        "transform-flow-strip-types"
+    ]
+}
+```
+
+你需要创建一个新项目，名称是 `babel-preset-*`，并创建两个文件。
+
+首先，创建 `package.json`，包含必要的依赖：
+
+```json
+{
+    "name": "babel-preset-my-awesome-preset",
+    "version": "1.0.0",
+    "author": "James Kyle <me@thejameskyle.com>",
+    "dependencies": {
+        "babel-preset-es2015": "^6.3.13",
+        "babel-preset-react": "^6.3.13",
+        "babel-plugin-transform-flow-strip-types": "^6.3.15"
+    }
+}
+```
+
+然后，创建 `index.js`，导出 `.babelrc` 的内容，将 plugin/preset 字符串替换为 `require` 调用。
+
+```js
+module.exports = {
+    presets: [
+        require('babel-preset-es2015'),
+        require('babel-preset-react'),
+    ],
+    plugins: [
+        require('babel-plugin-transform-flow-strip-types');
+    ]
+};
+```
+
 ## 插件手册
 
 TODO
@@ -177,3 +374,6 @@ TODO
 [1]: https://github.com/jamiebuilds/babel-handbook "The Babel Handbook"
 [2]: https://github.com/jamiebuilds/babel-handbook/blob/master/translations/en/user-handbook.md "User Handbook"
 [3]: https://github.com/jamiebuilds/babel-handbook/blob/master/translations/en/plugin-handbook.md "Plugin Handbook"
+[4]: https://remysharp.com/2010/10/08/what-is-a-polyfill "What Is a Polyfill"
+[5]: https://github.com/zloirock/core-js "zloirock/core-js"
+[6]: https://github.com/jamiebuilds "Jamie Kyle"
