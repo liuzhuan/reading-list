@@ -142,4 +142,18 @@ let strLength: number = (someValue as string).length;
 
 两者是等价的，选择哪一个依个人喜好而定。但是，如果在 TypeScript 使用 JSX 时，只能使用 `as` 语法。
 
+## [变量声明][2]
+
+`let` 比 `var` 有更多优点，比如块级作用域，防止多次重复等。
+
+能用 `const`，尽量用 `const`，否则，使用 `let`。尽量不使用 `var`。
+
+## [接口][3]
+
+TypeScript 的一个核心原则是，类型检查的重点在于检查类型的数据形状。这种方式有时也称作“鸭子🦆类型”或“结构子类型化（*structural subtyping*）”。
+
+接口是 TypeScript 定义代码之间调用接口的有效方式。
+
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
+[2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
+[3]: http://www.typescriptlang.org/docs/handbook/interfaces.html "Interfaces"
