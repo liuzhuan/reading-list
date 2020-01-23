@@ -319,7 +319,107 @@ interface 定义了类的公共部分。
 
 #### 类的 static 和 instance 的区别
 
-类有两种类型：static 和 instance。当类实现一个接口时，只有 instance 部分会被检测。
+类有两种类型：static 和 instance。当类实现一个接口时，只有 instance 部分会被检测。构造函数属于 static 部分，如果要对其检测，可以使用如下方法：
+
+```typescript
+interface ClockConstructor {
+    new (hour: number, minute: number): ClockInterface;
+}
+
+interface ClockInterface {
+    tick(): void;
+}
+
+function createClock(ctor: ClockConstructor, hour: number, minute: number): ClockInterface {
+    return new ctor(hour, minute);
+}
+
+class DigitalClock implements ClockInterface {
+    constructor(h: number, m: number) {}
+    tick() {
+        console.log('beep beep');
+    }
+}
+
+class AnalogClock implements ClockInterface {
+    constructor(h: number, m: number) {}
+
+    tick() {
+        console.log('tick tock');
+    }
+}
+
+let digital = createClock(DigitalClock, 12, 17);
+let analog = createClock(AnalogClock, 7, 32);
+```
+
+### 扩展接口
+
+接口也可以继承。
+
+```typescript
+interface Shape {
+    color: string;
+}
+
+interface Square extends Shape {
+    sideLength: number;
+}
+
+let square = {} as Square;
+square.color = 'blue';
+square.sideLength = 10;
+```
+
+接口可以扩展多个其他接口。
+
+```typescript
+interface Shape {
+    color: string;
+}
+
+interface PenStroke {
+    penWidth: number;
+}
+
+interface Square extends Shape, PenStroke {
+    sideLength: number;
+}
+
+let square = {} as Square;
+square.color = 'blue';
+square.sideLength = 10;
+square.penWidth = 5.0;
+```
+
+### 混合类型
+
+```typescript
+interface Counter {
+    (start: number): string;
+    interval: number;
+    reset(): void;
+}
+
+function getCounter(): Counter {
+    let counter = (function (start: number) {}) as Counter;
+    counter.interval = 123;
+    counter.reset = function() {};
+    return counter;
+}
+
+let c = getCounter();
+c(10);
+c.reset();
+c.interval = 5.0;
+```
+
+### 扩展 Class 的接口
+
+当接口继承 class 类型时，接口会继承 class 的所有成员。甚至会继承私有和保护成员。这意味着，当接口继承了含有私有成员的类，这个接口只能被该类或该类的子类实现。
+
+```typescript
+```
 
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
 [2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
