@@ -420,7 +420,134 @@ c.interval = 5.0;
 
 ## [类][4]
 
+一个简单的 class 例子：
 
+```typescript
+class Greeter {
+    greeting: string;
+    constructor(message: string) {
+        this.greeting = message;
+    }
+    greet() {
+        return `Hello, ${this.greeting}`;
+    }
+}
+
+let greeter = new Greeter('world');
+```
+
+### 继承
+
+来看一个简单的继承：
+
+```typescript
+class Animal {
+    move(distanceInMeters: number = 0) {
+        console.log(`Animal moved ${distanceInMeters}m.`);
+    }
+}
+
+class Dog extends Animal {
+    bark() {
+        console.log('Woof! Woof!');
+    }
+}
+
+const dog = new Dog();
+dog.bark();
+dog.move(10);
+dog.bark();
+```
+
+下面是一个复杂的继承：
+
+```typescript
+class Animal {
+    name: string;
+    constructor(theName: string) {
+        this.name = theName;
+    }
+    move(distanceInMeters: number = 0) {
+        console.log(`${this.name} moved ${distanceInMeters}m.`);
+    }
+}
+
+class Snake extends Animal {
+    constructor(name: string) { super(name); }
+    move(distanceInMeters = 5) {
+        console.log('Slithering...');
+        super.move(distanceInMeters);
+    }
+}
+
+class Horse extends Animal {
+    constructor(name: string) { super(name); }
+    move(distanceInMeters = 45) {
+        console.log('Galloping...');
+        super.move(distanceInMeters);
+    }
+}
+
+let sam = new Snake('Sammy the Python');
+let tom: Animal = new Horse('Tommy the Palomino');
+sam.move();
+tom.move(34);
+```
+
+### Public, private 和 protected 修饰符
+
+在 TypeScript 中，每个成员默认都是 `public` 的。
+
+可以用 `private` 标示私有成员变量。
+
+```typescript
+class Animal {
+    private name: string;
+    constructor(theName: string) {
+        this.name = theName;
+    }
+}
+
+new Animal('Cat').name;     // Error: 'name' is private;
+```
+
+TypeScript 是一种结构类型系统。当比较不同的类型时，如果所有成员的类型都兼容，无论它们来自哪里，都可以认为这些类型都兼容。
+
+但是，当比较的类型包含 `private` 或 `protected` 的成员变量时，比较法则会有所变化。如果一个类型包含 `private` 变量，那么其他的类型只有来自同一祖先类型时，才认为是兼容的。否则，即使结构形状一样，也不能看作是兼容的类型。
+
+比如：
+
+```typescript
+class Animal {
+    private name: string;
+    constructor(theName: string) {
+        this.name = theName;
+    }
+}
+
+class Rhino extends Animal {
+    constructor() { super('Rhino'); }
+}
+
+class Employee {
+    private name: string;
+    constructor(theName: string) { this.name = theName; }
+}
+
+let animal = new Animal('Goat');
+let rhino = new Rhino();
+let employee = new Employee('Bob');
+
+animal = rhino;
+animal = employee;  // Error: Type 'Employee' is not assignable to type 'Animal'.
+```
+
+### 理解 protected
+
+`protected` 同 `private` 类似，唯一的不同在于，`protected` 变量可以被子类实例访问。
+
+```typescript
+```
 
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
 [2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
