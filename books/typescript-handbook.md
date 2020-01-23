@@ -418,9 +418,11 @@ c.interval = 5.0;
 
 当接口继承 class 类型时，接口会继承 class 的所有成员。甚至会继承私有和保护成员。这意味着，当接口继承了含有私有成员的类，这个接口只能被该类或该类的子类实现。
 
-```typescript
-```
+## [类][4]
+
+
 
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
 [2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
 [3]: http://www.typescriptlang.org/docs/handbook/interfaces.html "Interfaces"
+[4]: http://www.typescriptlang.org/docs/handbook/classes.html "Classes"
