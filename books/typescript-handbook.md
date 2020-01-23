@@ -154,6 +154,173 @@ TypeScript 的一个核心原则是，类型检查的重点在于检查类型的
 
 接口是 TypeScript 定义代码之间调用接口的有效方式。
 
+最简单的例子：
+
+```typescript
+function printLabel(labelObj: { label: string }) {
+    console.log(labelObj.label);
+}
+
+let myObj = { size: 10, label: 'Size 10 Object' };
+printLabel(myObj);
+```
+
+尽管对象的属性多于函数参数的属性，但编译器仅检查必要的属性是否存在，因此不报错。
+
+如果使用接口重写一遍，代码如下：
+
+```typescript
+interface LabeledValue {
+    label: string;
+}
+
+function printLabel(labelObj: LabeledValue) {
+    console.log(labelObj.label);
+}
+
+let myObj = { size: 10, label: 'Size 10 Object' };
+printLabel(myObj);
+```
+
+### 可选属性
+
+```typescript
+interface SquareConfig {
+    color?: string;
+    width?: number;
+}
+
+function createSquare(config: SquareConfig): { color: string, area: number } {
+    let newSquare = { color: 'white', area: 100 };
+
+    if (config.color) {
+        newSquare.color = config.color;
+    }
+
+    if (config.width) {
+        newSquare.area = config.width * config.width;
+    }
+
+    return newSquare;
+}
+
+let mySquare = createSquare({ color: 'black' });
+```
+
+可选属性的好处在于，可以防止不隶属于该接口的其他属性名，避免误操作。
+
+### 只读属性
+
+有些属性只有在创建时才能写入，可以使用 `readonly` 修饰符。
+
+```typescript
+interface Point {
+    readonly x: number;
+    readonly y: number;
+}
+
+let p1: Point = { x: 10, y: 20 };
+p1.x = 4;   // Error, x is readonly property
+```
+
+TypeScript 自带 `ReadonlyArray<T>` 类型，它的行为如 `Array<T>` 一般，但是移除了所有的可变方法。你可以确信该数组一经创建，无法改变。
+
+```typescript
+let a: number[] = [1, 2, 3, 4];
+let ro: ReadonlyArray<number> = a;
+ro[0] = 12;         // Error
+ro.push(15);        // Error
+ro.length = 100;    // Error
+a = ro;             // Error
+a = ro as number[]; // OK
+```
+
+`readonly` 和 `const` 的区别在于：变量使用 `const`，而属性使用 `readonly`。
+
+### 多余属性检测
+
+```typescript
+interface SquareConfig {
+    color?: string;
+    width?: number;
+    [propName: string]: any;
+}
+
+function createSquare(config: SquareConfig): { color: string; area: number } {
+    // ...
+}
+
+let mySquare = createSquare({ coluor: 'red', width: 100 });
+```
+
+### 函数类型
+
+```typescript
+interface SearchFunc {
+    (source: string, subString: string): boolean;
+}
+
+let mySearch: SearchFunc;
+
+mySearch = function(src: string, sub: string): boolean {
+    let result = src.search(sub);
+    return result > -1;
+}
+```
+
+### 可索引类型
+
+可索引类型（*Indexable Types*）的索引签名（*Index Signature*）用于表示索引值类型和返回值类型。
+
+```typescript
+interface StringArray {
+    [index: number]: string;
+}
+
+let myArray: StringArray;
+myArray = ['Bob', 'Fred'];
+
+let myStr: string = myArray[0];
+```
+
+索引签名可以是 `number` 类型，也可以是 `string` 类型。要保证 `number` 类型索引签名对应的返回值，是 `string` 索引签名的子类型。
+
+可以用 `readonly` 修饰索引签名，表明该索引只读：
+
+```typescript
+interface ReadonlyStringArray {
+    readonly [index: number]: string;
+}
+
+let myArray: ReadonlyStringArray = ['Alice', 'Bob'];
+myArray[2] = 'Mallory';     // Error
+```
+
+### Class 类型
+
+可以使用 `implements` 实现严格的接口实现。
+
+```typescript
+interface ClockInterface {
+    currentTime: Date;
+    setTime(d: Date): void;
+}
+
+class Clock implements ClockInterface {
+    currentTime: Date = new Date();
+    setTime(d: Date) {
+        this.currentTime = d;
+    }
+    constructor(h: number, m: number) {}
+}
+```
+
+interface 定义了类的公共部分。
+
+#### 类的 static 和 instance 的区别
+
+类有两种类型：static 和 instance。当类实现一个接口时，只有 instance 部分会被检测。
+
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
 [2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
 [3]: http://www.typescriptlang.org/docs/handbook/interfaces.html "Interfaces"
