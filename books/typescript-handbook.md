@@ -547,6 +547,70 @@ animal = employee;  // Error: Type 'Employee' is not assignable to type 'Animal'
 `protected` 同 `private` 类似，唯一的不同在于，`protected` 变量可以被子类实例访问。
 
 ```typescript
+class Person {
+    protected name: string;
+    constructor(name: string) { this.name = name; }
+}
+
+class Employee extends Person {
+    private department: string;
+
+    constructor(name: string, department: string) {
+        super(name);
+        this.department = department;
+    }
+
+    public getElevatorPitch() {
+        return `Hello, my name is ${this.name} and I work in ${this.department}`;
+    }
+}
+
+let howard = new Employee('Howard', 'Sales');
+console.log(howard.getElevatorPitch());
+console.log(howard.name);   // Error
+```
+
+构造函数也可以指定为 `protected`，这意味着该类不能在包含类外实例化，但是可以扩展。
+
+```typescript
+class Person {
+    protected name: string;
+    protected constructor(theName: string) { this.name = theName; }
+}
+
+class Employee extends Person {
+    private department: string;
+
+    constructor(name: string, department: string) {
+        super(name);
+        this.department = department;
+    }
+
+    public getElevatorPitch() {
+        return `Hello, my name is ${this.name} and I work in ${this.department}`;
+    }
+}
+
+let howard = new Employee('Howard', 'Sales');
+let john = new Person('John');  // Error: The 'Person' constructor is protected
+```
+
+### Readonly 修饰符
+
+只读属性只能在属性声明时，或构造函数中初始化。
+
+```typescript
+class Octopus {
+    readonly name: string;
+    readonly numberOfLegs: number = 8;
+
+    constructor(theName: string) {
+        this.name = theName;
+    }
+}
+
+let dad = new Octopus('Man with the 8 strong legs');
+dad.name = 'Man with the 3-piece suit'; // Error: name is readonly
 ```
 
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
