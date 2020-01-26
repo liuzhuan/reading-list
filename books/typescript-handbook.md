@@ -613,6 +613,124 @@ let dad = new Octopus('Man with the 8 strong legs');
 dad.name = 'Man with the 3-piece suit'; // Error: name is readonly
 ```
 
+### 参数属性
+
+参数属性（*parameter properties*）允许在同一地方对属性创建并初始化。
+
+```typescript
+class Octopus {
+    readonly numberOfLegs: number = 8;
+    constructor(readonly name: string) {}
+}
+```
+
+除 `readonly` 外，还可以使用 `private`, `public`, `protected` 等。
+
+### 存取器
+
+TypeScript 支持 getter/setter 存取器。
+
+```typescript
+const fullNameMaxLength = 10;
+
+class Employee {
+    private _fullName: string;
+
+    get fullName(): string {
+        return this._fullName;
+    }
+
+    set fullName(newName: string) {
+        if (newName && newName.length > fullNameMaxLength) {
+            throw new Error(`fullName has a max length of ${fullNameMaxLength}`);
+        }
+
+        this._fullName = newName;
+    }
+}
+
+let employee = new Employee();
+employee.fullName = 'Bob Smith';
+if (employee.fullName) {
+    console.log(employee.fullName);
+}
+```
+
+注意：使用存取器时，需要将 TypeScript 编译器的输出设为 ECMAScript 5 或更高版本。
+
+### 静态属性
+
+```typescript
+class Grid {
+    static origin = { x: 0, y: 0 };
+    calculateDistanceFromOrigin(point: {x: number; y: number;}) {
+        let xDist = point.x - Grid.origin.x;
+        let yDist = point.y - Grid.origin.y;
+        return Math.sqrt(xDist * xDist + yDist * yDist) / this.scale;
+    }
+
+    constructor(public scale: number) {}
+}
+
+let grid1 = new Grid(1.0);
+let grid2 = new Grid(5.0);
+
+console.log(grid1.calculateDistanceFromOrigin({ x: 10, y: 10 }));
+console.log(grid2.calculateDistanceFromOrigin({ x: 10, y: 10 }));
+```
+
+### 抽象类
+
+抽象类指哪些可以被继承，但是本身无法实例化的类。使用 `abstract` 标识。
+
+```typescript
+abstract class Animal {
+    abstract makeSound(): void;
+
+    move(): void {
+        console.log('roaming the earth...');
+    }
+}
+
+let dog = new Animal(); // Error: Cannot create an instance of an abstract class
+```
+
+被标示为 `abstract` 的函数，必须在子类中实现。
+
+```typescript
+abstract class Department {
+    constructor(public name: string) {}
+
+    printName(): void {
+        console.log(`Department name: ${this.name}`);
+    }
+
+    abstract printMeeting(): void;
+}
+
+class AccountingDepartment extends Department {
+
+    constructor() {
+        super('Accounting and Auditing');
+    }
+
+    printMeeting(): void {
+        console.log('The Accounting Department meets each Monday at 10am.');
+    }
+
+    generateReports(): void {
+        console.log('Generating accounting reports...');
+    }
+}
+
+let department: Department;
+department = new Department();  // Error: 不可实例化抽象类
+department = new AccountingDepartment();
+department.printName();
+department.printMeeting();
+department.generateReports();   // Error: Department 抽象类不包含 generateReports 方法
+```
+
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
 [2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
 [3]: http://www.typescriptlang.org/docs/handbook/interfaces.html "Interfaces"
