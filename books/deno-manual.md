@@ -23,6 +23,51 @@ Deno 是一个 JavaScript/TypeScript 运行时，默认开启安全选项，并�
 - 有大量经过审核的[标准模块][5]（受 Golang 的影响较大）
 - 脚本可以打包为一个独立 JavaScript 文件
 
+### 哲学
+
+Deno 致力于为现代开发者创造一个高效安全的脚本环境。
+
+Deno 将一直是一个单独的可执行文件。给定一个 Deno 的程序 URL，就可以在这个 [10MB 左右的可执行文件][6]上运行。Deno 既是运行时，也是包管理器。它使用标准的兼容浏览器的协议加载模块：URL。
+
+另外，Deno 还可以取代 Shell 和 Python，编写一些工具类脚本。
+
+### 目标
+
+- 只包含一个可执行文件（deno）
+- 提供安全的默认选项。除非明确说明，脚本默认禁止访问文件、环境和网络
+- 兼容浏览器：Deno 程序的子集，如果用纯 JavaScript 编写，并且没有使用全局的 Deno 命名空间，应当可以直接在浏览器中运行
+- 提供内置工具，比如单元测试，代码格式化和代码检测等，提升开发体验
+- 禁止向用户空间泄露 V8 概念
+- 可以有效提供 HTTP 服务
+
+### 同 Node.js 的比较
+
+- Deno 不使用 npm。它的模块基于 URL 或文件路径
+- Deno 的模块路径解析算法不依赖 package.json
+- 所有的异步操作返回 Promise。因此，Deno 和 Node 的 API 接口不同
+- Deno 需要明确开启文件、网络和环境的访问权限
+- 当遇到未捕获的错误，Deno 会终止
+- 使用 ES 模块，不支持 `require()`。第三方模块通过 URL 引入。
+
+```typescript
+import * as log from 'https://deno.land/std/log/mod.ts';
+```
+
+### 其他关键行为
+
+- 远程代码初次执行时，会下载并缓存。直到使用 `--reload` 选项运行程序时，代码才会更新。（因此，在飞机上也是可以工作的）
+- 从远程下载的模块或文件，应当是不变并且可缓存的
+
+## 内置的实用工具
+
+- `deno info`       依赖检查器
+- `deno fmt`        代码格式化
+- `deno bundle`     打包
+- `deno types`      运行时类型信息
+- `deno test`       测试运行器
+- `--debug`         命令行调试器，即将到来
+- `deno lint`       代码检测器，即将到来
+
 ## REF
 
 1. [Deno Manual][1]
@@ -32,3 +77,4 @@ Deno 是一个 JavaScript/TypeScript 运行时，默认开启安全选项，并�
 [3]: https://github.com/denoland/deno/issues/2473 "Major features necessary for 1.0"
 [4]: https://tokio.rs/ "Tokio"
 [5]: https://github.com/denoland/deno/tree/master/std "Deno Standard Modules"
+[6]: https://github.com/denoland/deno/releases "Releases of Deno"
