@@ -65,8 +65,74 @@ import * as log from 'https://deno.land/std/log/mod.ts';
 - `deno bundle`     打包
 - `deno types`      运行时类型信息
 - `deno test`       测试运行器
-- `--debug`         命令行调试器，即将到来
-- `deno lint`       代码检测器，即将到来
+- `--debug`         命令行调试器，[即将到来][7]
+- `deno lint`       代码检测器，[即将到来][8]
+
+## 设置
+
+下载安装的 N 种方法：
+
+```sh
+# Using Shell
+$ curl -fsSL https://deno.land/x/install/install.sh | sh
+
+# Using Homebrew (mac)
+$ brew install deno
+
+# Using Cargo
+$ cargo install deno
+```
+
+安装完成后，可以执行如下命令：
+
+```sh
+$ deno https://deno.land/std/examples/welcome.ts
+```
+
+如果想查看 `welcome.ts` 的源码，只需把 `deno` 替换为 `curl` 即可。
+
+## 例子
+
+模仿 unix `cat` 程序
+
+```typescript
+for (let i = 0; i < Deno.args.length; i++) {
+    let filename: string = Deno.args[i];
+    let file = await Deno.open(filename);
+    await Deno.copy(Deno.stdout, file);
+    file.close();
+}
+```
+
+执行时，需要增加 `--allow-read` 标识位：
+
+```sh
+$ deno --allow-read cat.ts /etc/passwd
+```
+
+TCP 回显服务器
+
+```typescript
+const listener = Deno.listen({ port: 8080 });
+console.log('listening on 0.0.0.0:8080');
+for await (const conn of listener) {
+    Deno.copy(conn, conn);
+}
+```
+
+使用 `--allow-net` 标识位运行：
+
+```sh
+$ deno --allow-net https://deno.land/std/examples/echo_server.ts
+```
+
+为了测试服务器是否正常，使用 netcat 发送数据：
+
+```sh
+$ nc localhost 8080
+hello world
+hello world
+```
 
 ## REF
 
@@ -78,3 +144,5 @@ import * as log from 'https://deno.land/std/log/mod.ts';
 [4]: https://tokio.rs/ "Tokio"
 [5]: https://github.com/denoland/deno/tree/master/std "Deno Standard Modules"
 [6]: https://github.com/denoland/deno/releases "Releases of Deno"
+[7]: https://github.com/denoland/deno/issues/1120 "Support Chrome Devtools"
+[8]: https://github.com/denoland/deno/issues/1880 "Add deno lint subcommand"
