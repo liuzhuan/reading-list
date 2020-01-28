@@ -6,6 +6,7 @@
 - [变量声明](#变量声明)
 - [接口](#接口)
 - [类](#类)
+- [函数](#函数)
 
 ## [基本类型][1]
 
@@ -782,7 +783,54 @@ interface Point3d extends Point {
 let point3d: Point3d = { x: 1, y: 2, z: 3 };
 ```
 
+## [函数][5]
+
+可选参数
+
+```typescript
+function buildName(firstName: string, lastName?: string) {
+    if (lastName)
+        return `${firstName} ${lastName}`;
+    return firstName;
+}
+
+let result1 = buildName('Bob');
+```
+
+设定默认值
+
+```ts
+function buildName(firstName: string, lastName = 'Smith') {
+    return `${firstName} ${lastName}`;
+}
+
+console.log(buildName("Tony"));             // => Tony Smith
+console.log(buildName("Tony", "Stark"));    // => Tony Stark
+```
+
+### 收集参数
+
+```ts
+function buildName(firstName: string, ...restOfName: string[]) {
+    return `${firstName} ${restOfName.join(' ')}`;
+}
+
+let employeeName = buildName('Joseph', 'Samuel', 'Lucas', 'MacKinzie');
+console.log(employeeName);
+```
+
+在函数类型中也可以使用省略号
+
+```ts
+function buildName(firstName: string, ...restOfName: string[]) {
+    return `${firstName} ${restOfName.join(' ')}`;
+}
+
+let buildNameFun: (fname: string, ...rest: string[]) => string = buildName;
+```
+
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
 [2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
 [3]: http://www.typescriptlang.org/docs/handbook/interfaces.html "Interfaces"
 [4]: http://www.typescriptlang.org/docs/handbook/classes.html "Classes"
+[5]: http://www.typescriptlang.org/docs/handbook/functions.html "Functions"
