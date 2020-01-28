@@ -1,5 +1,12 @@
 # TypeScript Handbook
 
+目录
+
+- [基本类型](#基本类型)
+- [变量声明](#变量声明)
+- [接口](#接口)
+- [类](#类)
+
 ## [基本类型][1]
 
 ```ts
@@ -729,6 +736,50 @@ department = new AccountingDepartment();
 department.printName();
 department.printMeeting();
 department.generateReports();   // Error: Department 抽象类不包含 generateReports 方法
+```
+
+### 高级技巧
+
+构造函数 Constructor Functions
+
+```typescript
+class Greeter {
+  static standardGreeting = 'Hello, there';
+  greeting: string;
+  
+  greet() {
+    if (this.greeting) {
+      return `Hello, ${this.greeting}`;
+    }
+
+    return Greeter.standardGreeting;
+  }
+}
+
+let greeter1: Greeter;
+greeter1 = new Greeter();
+console.log(greeter1.greet());
+
+let greeterMaker: typeof Greeter = Greeter;
+greeterMaker.standardGreeting = 'Hey there!';
+
+let greeter2: Greeter = new greeterMaker();
+console.log(greeter2.greet());
+```
+
+把 Class 当作接口
+
+```typescript
+class Point {
+  x: number;
+  y: number;
+}
+
+interface Point3d extends Point {
+  z: number;
+}
+
+let point3d: Point3d = { x: 1, y: 2, z: 3 };
 ```
 
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
