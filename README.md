@@ -13,6 +13,7 @@
 
 1. [Babel Handbook](./books/babel-handbook/README.md), by *James Kyle*
 1. [Everything curl](https://ec.haxx.se/), by *Daniel Stenberg*
+1. [Deno Manual](./books/deno-manual.md)
 1. [DOM Enlightenment](./books/dom-enlightenment.md), by *Cody Lindley*
 1. [Pro Git 2nd Edition(2014)](./books/pro-git-v2.md), by *Scott Chacon* and *Ben Straub*, Apress
 1. [The Go Programming Language](https://book.douban.com/subject/26337545/), by *Alan A. A. Donovan* & *Brian W. Kernighan*, 2015/10/26
