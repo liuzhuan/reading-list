@@ -25,6 +25,7 @@
 1. [GNU Make Tutorial](http://www.gnu.org/software/make/manual/html_node/index.html), by Free Software Foundation, 2016/05/22
 1. Node 即学即用，by *Tom Hughes-Croucher* & *Mike Wilson*，人民邮电出版社，2013年2月
 1. [Python编程：从入门到实践](./books/python-crash-course.md), by *Eric Matthes*, 2016/07, 人民邮电出版社
+1. [Remote: Office Not Required](./books/remote-office-not-required.md), by *David Heinemeier Hansson* & *Jason Fried*, 2013/10/29
 1. [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sicp/full-text/book/book.html), by *Harold Abelson* & *Gerald Jay Sussman* & *Julie Sussman*, MIT Press.
 1. [TypeScript Handbook](./books/typescript-handbook.md)
 1. [TypeScript Deep Dive](https://github.com/basarat/typescript-book/)
