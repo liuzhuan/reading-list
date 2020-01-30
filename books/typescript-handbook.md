@@ -829,6 +829,60 @@ function buildName(firstName: string, ...restOfName: string[]) {
 let buildNameFun: (fname: string, ...rest: string[]) => string = buildName;
 ```
 
+### this
+
+掌握如何使用 `this` 算是学习 JavaScript 路上的成人礼。
+
+this 和箭头函数
+
+```typescript
+let deck = {
+    suits: ['hearts', 'spades', 'clubs', 'diamonds'],
+    cards: Array(52),
+    createCardPicker: function() {
+        return function() {
+            let pickedCard = Math.floor(Math.random() * 52);
+            let pickedSuit = Math.floor(pickedCard / 13);
+            return {
+                suit: this.suits[pickedSuit],
+                card: pickedCard % 13,
+            };
+        }
+    }
+}
+
+let cardPicker = deck.createCardPicker();
+let pickedCard = cardPicker();
+console.log(`card: ${pickedCard.card} of ${pickedCard.suit}`);
+// => Uncaught TypeError: Cannot read property 'suits' of undefined
+```
+
+> Arrow functions capture the `this` where the function is created rather than where it is invoked.
+
+对于箭头函数，this 的指向在定义时绑定，而不是在调用时绑定。
+
+```typescript
+let deck = {
+    suits: ['hearts', 'spades', 'clubs', 'diamonds'],
+    cards: Array(52),
+    createCardPicker: function() {
+        return () => {
+            let pickedCard = Math.floor(Math.random() * 52);
+            let pickedSuit = Math.floor(pickedCard / 13);
+            return {
+                suit: this.suits[pickedSuit],
+                card: pickedCard % 13,
+            };
+        }
+    }
+}
+
+let cardPicker = deck.createCardPicker();
+let pickedCard = cardPicker();
+console.log(`card: ${pickedCard.card} of ${pickedCard.suit}`);
+// => card: 10 of hearts
+```
+
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
 [2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
 [3]: http://www.typescriptlang.org/docs/handbook/interfaces.html "Interfaces"
