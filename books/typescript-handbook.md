@@ -7,6 +7,7 @@
 - [接口](#接口)
 - [类](#类)
 - [函数](#函数)
+- [泛型](#泛型)
 
 ## [基本类型][1]
 
@@ -919,8 +920,35 @@ let pickedCard = cardPicker();
 console.log(`card: ${pickedCard.card} of ${pickedCard.suit}`);
 ```
 
+## [泛型][6]
+
+可复用性在软件工程中很重要。泛型是实现代码复用的重要手段之一。
+
+泛型的最基本用法就是恒等函数（identity function）
+
+```ts
+function identity<T>(arg: T): T {
+    return arg;
+}
+```
+
+在此，使用了类型变量（type variable）`T`。
+
+泛型的使用方法有两种，一种是提供类型变量：
+
+```ts
+let output = identity<string>('myString');
+```
+
+第二种方法更常用，即**类型参数推断**（type argument inference），让编译器根据实参类型，自动设置 `T` 的类型：
+
+```ts
+let output = identity('myString');
+```
+
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
 [2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
 [3]: http://www.typescriptlang.org/docs/handbook/interfaces.html "Interfaces"
 [4]: http://www.typescriptlang.org/docs/handbook/classes.html "Classes"
 [5]: http://www.typescriptlang.org/docs/handbook/functions.html "Functions"
+[6]: http://www.typescriptlang.org/docs/handbook/generics.html "Generics"
