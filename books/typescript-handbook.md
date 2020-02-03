@@ -1030,9 +1030,43 @@ let x = {
 getProperty(x, 'a');
 ```
 
+其中，用到了 [`typeof`][7] 关键字，这是 TypeScript 2.1 引入的特性，用来获取某类型的所有键名。
+
+在工厂函数中使用泛型时，如下所示：
+
+```ts
+class BeeKeeper {
+    hasMask: boolean;
+}
+
+class ZooKeeper {
+    nametag: string;
+}
+
+class Animal {
+    numLegs: number;
+}
+
+class Bee extends Animal {
+    keeper: BeeKeeper;
+}
+
+class Lion extends Animal {
+    keeper: ZooKeeper;
+}
+
+function createInstance<A extends Animal>(c: new () => A): A {
+    return new c();
+}
+
+createInstance(Lion).keeper.nametag;
+createInstance(Bee).keeper.hasMask;
+```
+
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
 [2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
 [3]: http://www.typescriptlang.org/docs/handbook/interfaces.html "Interfaces"
 [4]: http://www.typescriptlang.org/docs/handbook/classes.html "Classes"
 [5]: http://www.typescriptlang.org/docs/handbook/functions.html "Functions"
 [6]: http://www.typescriptlang.org/docs/handbook/generics.html "Generics"
+[7]: http://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#keyof-and-lookup-types "keyof and Lookup Types"
