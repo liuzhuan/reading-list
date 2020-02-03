@@ -8,6 +8,7 @@
 - [类](#类)
 - [函数](#函数)
 - [泛型](#泛型)
+- [枚举](#枚举)
 
 ## [基本类型][1]
 
@@ -1063,6 +1064,10 @@ createInstance(Lion).keeper.nametag;
 createInstance(Bee).keeper.hasMask;
 ```
 
+## [枚举][8]
+
+枚举用来定义命名的常量。
+
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
 [2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
 [3]: http://www.typescriptlang.org/docs/handbook/interfaces.html "Interfaces"
@@ -1070,3 +1075,4 @@ createInstance(Bee).keeper.hasMask;
 [5]: http://www.typescriptlang.org/docs/handbook/functions.html "Functions"
 [6]: http://www.typescriptlang.org/docs/handbook/generics.html "Generics"
 [7]: http://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#keyof-and-lookup-types "keyof and Lookup Types"
+[8]: http://www.typescriptlang.org/docs/handbook/enums.html "Enums"
