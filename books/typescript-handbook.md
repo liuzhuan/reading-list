@@ -946,6 +946,90 @@ let output = identity<string>('myString');
 let output = identity('myString');
 ```
 
+编译器会把泛型当作 any 类型对待，可以和数组结合使用。
+
+```ts
+function loggingIdentity<T>(arg: T[]): T[] {
+    console.log(arg.length);
+    return arg;
+}
+```
+
+泛型函数和接口同普通函数并没有什么不同：
+
+```ts
+interface GenericIdentityFn {
+    <T>(arg: T): T;
+}
+
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+let myIdentity: GenericIdentityFn = identity;
+```
+
+也可以把泛型参数当作接口的一个参数，这样让调用者更明确：
+
+```ts
+interface GenericIdentityFn<T> {
+    (arg: T): T;
+}
+
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+let myIdentity: GenericIdentityFn<number> = identity;
+```
+
+除泛型接口（generic interfaces）外，还可以定义泛型类（generic classes）。
+
+```ts
+class GenericNumber<T> {
+    zeroValue: T;
+    add: (x: T, y: T) => T;
+}
+
+let myGenericNumber = new GenericNumber<number>();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function(x, y) { return x + y; };
+```
+
+注意，泛型类的静态成员不受泛型的影响。
+
+如果想对泛型类型做一些约束，可以使用接口定义约束条件，然后 `extends` 该接口即可。
+
+```ts
+interface Lengthwise {
+    length: number;
+}
+
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+    console.log(arg.length);
+    return arg;
+}
+
+loggingIdentity('abc');
+```
+
+可以声明一个受其他类型参数约束的类型参数
+
+```ts
+function getProperty<T, K extends keyof T>(obj: T, key: K) {
+    return obj[key];
+}
+
+let x = {
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4,
+}
+
+getProperty(x, 'a');
+```
+
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
 [2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
 [3]: http://www.typescriptlang.org/docs/handbook/interfaces.html "Interfaces"
