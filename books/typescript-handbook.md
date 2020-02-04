@@ -8,7 +8,7 @@
 - [类](#类)
 - [函数](#函数)
 - [泛型](#泛型)
-- [枚举](#枚举)
+- [类型推断](#类型推断)
 
 ## [基本类型][1]
 
@@ -1068,6 +1068,15 @@ createInstance(Bee).keeper.hasMask;
 
 枚举用来定义命名的常量。
 
+Too much details, Read It Later.
+
+## [类型推断][9]
+
+类型推断包括以下几种：
+
+1. 普通推断，在变量声明、函数默认值等情况下执行
+1. 上下文类型推断（contextual typing），依据类型的位置推断变量类型。
+
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
 [2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
 [3]: http://www.typescriptlang.org/docs/handbook/interfaces.html "Interfaces"
@@ -1076,3 +1085,4 @@ createInstance(Bee).keeper.hasMask;
 [6]: http://www.typescriptlang.org/docs/handbook/generics.html "Generics"
 [7]: http://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#keyof-and-lookup-types "keyof and Lookup Types"
 [8]: http://www.typescriptlang.org/docs/handbook/enums.html "Enums"
+[9]: http://www.typescriptlang.org/docs/handbook/type-inference.html "Type Inference"
