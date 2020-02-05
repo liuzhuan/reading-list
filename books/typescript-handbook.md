@@ -9,6 +9,7 @@
 - [函数](#函数)
 - [泛型](#泛型)
 - [类型推断](#类型推断)
+- [Symbols][#Symbols]
 
 ## [基本类型][1]
 
@@ -1077,6 +1078,49 @@ Too much details, Read It Later.
 1. 普通推断，在变量声明、函数默认值等情况下执行
 1. 上下文类型推断（contextual typing），依据类型的位置推断变量类型。
 
+## [Symbols][10]
+
+`symbol` 是 ES2015 新增的基本类型。通过调用 `Symbol` 构造函数创建。每个 Symbol 都是独一无二的。
+
+```js
+let sym1 = Symbol();
+let sym2 = Symbol('hello');     //  可选的字符串键值
+
+let sym3 = Symbol('hello');
+console.log(sym2 == sym3);      // => false
+console.log(sym2 === sym3);     // => false
+```
+
+symbols 和字符串一样，都可以当作对象的键值。
+
+```js
+const sym = Symbol();
+
+let obj = {
+    [sym]: 'value'
+}
+
+console.log(obj[sym]);  // => value
+```
+
+还可以在类中充当成员变量名：
+
+```js
+const getClassNameSymbol = Symbol();
+
+class C {
+    [getClassNameSymbol]() {
+        return 'C';
+    }
+}
+
+let c = new C();
+let className = c[getClassNameSymbol]();
+console.log(className);     // => C
+```
+
+除了用户自定义的 symbol，ES 还内置了许多知名 Symbol。比如 `Symbol.hasInstance`，`Symbol.isConcatSpreadable` 等。
+
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
 [2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
 [3]: http://www.typescriptlang.org/docs/handbook/interfaces.html "Interfaces"
@@ -1086,3 +1130,4 @@ Too much details, Read It Later.
 [7]: http://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#keyof-and-lookup-types "keyof and Lookup Types"
 [8]: http://www.typescriptlang.org/docs/handbook/enums.html "Enums"
 [9]: http://www.typescriptlang.org/docs/handbook/type-inference.html "Type Inference"
+[10]: https://www.typescriptlang.org/docs/handbook/symbols.html "Symbols"
