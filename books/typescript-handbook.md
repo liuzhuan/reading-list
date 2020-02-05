@@ -9,7 +9,8 @@
 - [函数](#函数)
 - [泛型](#泛型)
 - [类型推断](#类型推断)
-- [Symbols][#Symbols]
+- [Symbols](#Symbols)
+- [迭代器和生成器](#迭代器和生成器)
 
 ## [基本类型][1]
 
@@ -1121,6 +1122,10 @@ console.log(className);     // => C
 
 除了用户自定义的 symbol，ES 还内置了许多知名 Symbol。比如 `Symbol.hasInstance`，`Symbol.isConcatSpreadable` 等。
 
+## [迭代器和生成器][11]
+
+TODO
+
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
 [2]: http://www.typescriptlang.org/docs/handbook/variable-declarations.html "Variable Declarations"
 [3]: http://www.typescriptlang.org/docs/handbook/interfaces.html "Interfaces"
@@ -1131,3 +1136,4 @@ console.log(className);     // => C
 [8]: http://www.typescriptlang.org/docs/handbook/enums.html "Enums"
 [9]: http://www.typescriptlang.org/docs/handbook/type-inference.html "Type Inference"
 [10]: https://www.typescriptlang.org/docs/handbook/symbols.html "Symbols"
+[11]: https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html "Iterators and Generators"
