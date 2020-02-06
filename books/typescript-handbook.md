@@ -11,6 +11,7 @@
 - [类型推断](#类型推断)
 - [Symbols](#Symbols)
 - [迭代器和生成器](#迭代器和生成器)
+- [模块](#模块)
 
 ## [基本类型][1]
 
@@ -1124,6 +1125,58 @@ console.log(className);     // => C
 
 ## [迭代器和生成器][11]
 
+如果一个对象实现了 `Symbol.iterator` 属性，就可以被认为是可迭代的。`Array`, `Map`, `Set`, `String`, `Int32Array`, `Uint32Array` 等内置对象，已经自带 `Symbol.iterator` 属性。`Symbol.iterator` 函数用来返回一系列可以迭代的数值。
+
+`for...of` 语句
+
+```js
+let someArray = [1, "string", false];
+for (let entry of someArray) {
+    console.log(entry);     // => 1, "string", false
+}
+```
+
+`for...of` 只能在可迭代对象（`iterable`）上使用，而 `for...in` 可以在任何对象上使用。
+
+```js
+let pets = new Set(['Cat', 'Dog', 'Hamster']);
+pets['species'] = 'mammals';
+
+for (let pet in pets) {
+    console.log(pet);   // => species
+}
+
+for (let pet of pets) {
+    console.log(pet);   // => Cat Dog Hamster
+}
+```
+
+如果目标是 ES5 或 ES3 兼容语法，则 `for...of` 只能用于数组对象。否则会报错。
+
+## [模块][12]
+
+### 导出
+
+任何声明（包括但不限于变量，函数，类，类型别名或接口等），都可以通过 `export` 导出。
+
+```ts
+// StringValidator.ts
+export interface StringValidator {
+    isAcceptable(s: string): boolean;
+}
+
+// ZipCodeValidator.ts
+import { StringValidator } from './StringValidator';
+
+export const numberRegexp = /^[0-9]+$/;
+
+export class ZipCodeValidator implements StringValidator {
+    isAcceptable(s: string) {
+        return s.length === 5 && numberRegexp.test(s);
+    }
+}
+```
+
 TODO
 
 [1]: http://www.typescriptlang.org/docs/handbook/basic-types.html "Basic Types"
@@ -1137,3 +1190,4 @@ TODO
 [9]: http://www.typescriptlang.org/docs/handbook/type-inference.html "Type Inference"
 [10]: https://www.typescriptlang.org/docs/handbook/symbols.html "Symbols"
 [11]: https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html "Iterators and Generators"
+[12]: http://www.typescriptlang.org/docs/handbook/modules.html "Modules"
