@@ -17,7 +17,7 @@
 1. [Deno Manual](./books/deno-manual.md)
 1. [DOM Enlightenment](./books/dom-enlightenment.md), by *Cody Lindley*
 1. [Pro Git 2nd Edition(2014)](./books/pro-git-v2.md), by *Scott Chacon* and *Ben Straub*, Apress
-1. [The Go Programming Language](https://book.douban.com/subject/26337545/), by *Alan A. A. Donovan* & *Brian W. Kernighan*, 2015/10/26
+1. [The Go Programming Language](./books/gopl/README.md), by *Alan A. A. Donovan* & *Brian W. Kernighan*, 2015/10/26
 1. [图解 HTTP](https://book.douban.com/subject/25863515/), by [日]上野宣, 译者于均良, 人民邮电出版社，2014年4月
 1. [计算机是怎样跑起来的？](./books/how-computers-work/README.md), by [日]矢泽久雄，译者胡屹，人民邮电出版社，2015年5月
 1. [JavaScript 测试驱动开发](./books/test-driving-javascript-applications.md), by *Venkat Subramaniam*
