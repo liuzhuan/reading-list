@@ -12,6 +12,7 @@
 - [Symbols](#Symbols)
 - [迭代器和生成器](#迭代器和生成器)
 - [模块](#模块)
+- [Namespaces](./namespaces.md)
 
 ## [基本类型][1]
 
